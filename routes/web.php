@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login', function () {
+    $instance = new App\Http\Controllers\Login();
+    return $instance->showLogin();
+});
+
+Route::post('doLogin', function () {
+    $instance = new App\Http\Controllers\Login();
+    return $instance->doLogin();
+});
