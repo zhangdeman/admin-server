@@ -14,7 +14,7 @@
 
 <!-- Other -->
 <script src="/bootstrap/js/calendar.min.js"></script> <!-- Calendar -->
-<script src="/bootstrap/js/feeds.min.js"></script> <!-- News Feeds -->
+<!--script src="/bootstrap/js/feeds.min.js"></script--> <!-- News Feeds -->
 
 
 <!-- All JS functions -->

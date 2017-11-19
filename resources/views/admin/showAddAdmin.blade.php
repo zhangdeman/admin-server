@@ -188,26 +188,29 @@
 
             <p>添加管理员，请慎重操作.</p>
 
-            <input class="form-control input-lg m-b-10" type="text" placeholder="真实姓名">
-            <input class="form-control input-lg m-b-10" type="text" placeholder="管理员昵称">
+            <input class="form-control input-lg m-b-10" type="text" id="admin-real-name" placeholder="真实姓名">
+            <input class="form-control input-lg m-b-10" type="text" id="admin-nickname" placeholder="管理员昵称">
             <div class="block-area" id="select">
-                <select class="form-control input-lg m-b-10">
+                <select id="admin-role" class="form-control input-lg m-b-10">
                     <option value="0">超级管理员</option>
                     <option value="1">普通管理员</option>
                     <option value="2">普通用户</option>
                 </select>
             </div>
-            <input class="form-control input-lg m-b-10" type="password" placeholder="登录密码">
-            <input class="form-control input-lg m-b-10" type="password" placeholder="确认登录密码">
-            <input class="form-control input-lg m-b-10" type="email" placeholder="管理员邮箱">
-            <input class="form-control input-lg m-b-10" type="tel" placeholder="管理员手机号">
+            <input class="form-control input-lg m-b-10" type="password" id="admin-password" placeholder="登录密码">
+            <input class="form-control input-lg m-b-10" type="password" id="admin-confirm-password" placeholder="确认登录密码">
+            <input class="form-control input-lg m-b-10" type="email" id="admin-main" placeholder="管理员邮箱">
+            <input class="form-control input-lg m-b-10" type="tel" id="admin-phone" placeholder="管理员手机号">
             <!-- Textarea -->
             <div class="block-area" id="textarea">
                 <textarea class="form-control overflow" rows="3" placeholder="管理员备注信息"></textarea>
             </div>
+            <br>
+            <input class="form-control input-lg m-b-1" type="button" value="添加" id="add-admin-button">
         </div>
     </section>
 </section>
 
 @include('common/footer')
+<script type="text/javascript" src="/js/admin/add-admin.js"></script>
 
