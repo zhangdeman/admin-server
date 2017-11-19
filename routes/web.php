@@ -26,7 +26,14 @@ Route::post('doLogin', function () {
     return $instance->doLogin();
 });
 
+//展示添加管理员页面
 Route::get('showAddAdmin', function () {
     $instance = new App\Http\Controllers\Admin();
     return $instance->showAddAdmin();
+});
+
+//添加管理员
+Route::post('doAddAdmin', function (Request $request) {
+    $instance = new App\Http\Controllers\Admin();
+    return $instance->doAddAdmin($request);
 });

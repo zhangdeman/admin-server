@@ -284,7 +284,7 @@ $(document).ready(function(){
     /* --------------------------------------------------------
 	RSS Feed widget
     -----------------------------------------------------------*/
-    (function(){
+    (function(){}/*{
 	if($('#news-feed')[0]){
 	    $('#news-feed').FeedEk({
 		FeedUrl: 'http://rss.cnn.com/rss/edition.rss',
@@ -294,7 +294,7 @@ $(document).ready(function(){
 		DescCharacterLimit: 0
 	    });
 	}
-    })();
+    }*/)();
 
     /* --------------------------------------------------------
 	Chat
