@@ -11,6 +11,7 @@
 |
 */
 
+use \Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,4 +24,9 @@ Route::get('login', function () {
 Route::post('doLogin', function () {
     $instance = new App\Http\Controllers\Login();
     return $instance->doLogin();
+});
+
+Route::get('showAddAdmin', function () {
+    $instance = new App\Http\Controllers\Admin();
+    return $instance->showAddAdmin();
 });
