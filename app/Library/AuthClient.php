@@ -5,17 +5,26 @@
  * Date: 2017/11/18
  * Time: 12:10
  */
-namespace App\Http\Library;
-class AuthClient
+namespace App\Library;
+class AuthClient extends BaseLibrary
 {
+    public function __construct()
+    {
+
+    }
+
     /**
-     * 生成接口签名
+     * 验证管理员身份
      * @param $params
      * @return string
      */
-    public static function genSign($params)
+    public static function checkAdminInfo($params)
     {
-
-        return '';
+        $params = self::formatParams($params);
+        $requestUrl = self::getRequestUrl('CHECK_ADMIN_INFO_URL');
+        $sign = self::genSign($params);
+        return $sign;
     }
+
+
 }

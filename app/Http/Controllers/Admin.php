@@ -8,6 +8,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Http\Request;
+use App\Library\IdWorker;
+use Curl\Curl;
+use App\Library\AuthClient;
 
 class Admin extends Controller
 {
@@ -21,6 +24,10 @@ class Admin extends Controller
      */
     public function showAddAdmin()
     {
+        $curl = new Curl();
+        echo "<pre>";
+        var_dump(AuthClient::checkAdminInfo(array('name' => 'zhangdeman', 'like' => 'code')));die;
+        var_dump(IdWorker::generateParticle());die;
         return view('admin/showAddAdmin');
     }
 
