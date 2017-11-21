@@ -21,9 +21,12 @@ class AuthClient extends BaseLibrary
     public static function checkAdminInfo($params)
     {
         $params = self::formatParams($params);
-        $requestUrl = self::getRequestUrl('CHECK_ADMIN_INFO_URL');
-        $sign = self::genSign($params);
-        return $sign;
+        $requestInfo = self::getRequestUrl('CHECK_ADMIN_INFO');
+        $params['sign'] = self::genSign($params);
+
+        self::curl($requestInfo['url'], $requestInfo['method'], $params);
+
+        return '';
     }
 
 

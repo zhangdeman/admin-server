@@ -24,10 +24,6 @@ class Admin extends Controller
      */
     public function showAddAdmin()
     {
-        $curl = new Curl();
-        echo "<pre>";
-        var_dump(AuthClient::checkAdminInfo(array('name' => 'zhangdeman', 'like' => 'code')));die;
-        var_dump(IdWorker::generateParticle());die;
         return view('admin/showAddAdmin');
     }
 

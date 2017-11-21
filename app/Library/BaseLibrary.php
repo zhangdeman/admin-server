@@ -6,6 +6,7 @@
  * Time: 22:38
  */
 namespace App\Library;
+use Curl\Curl;
 
 class BaseLibrary
 {
@@ -62,6 +63,38 @@ class BaseLibrary
      */
     public static function getRequestUrl($requestUri='')
     {
-        return env('BASE_PROTOCOL').'://'.env('BASE_INTERFACE_IP').':'.env('BASE_INTERFACE_PORT').env($requestUri);
+        $requestUrl = env('BASE_PROTOCOL').'://'.env('BASE_INTERFACE_IP').':'.env('BASE_INTERFACE_PORT').env($requestUri.'_URL');
+        $requestMethod = env($requestUri.'_METHOD');
+        $curlInfo = array(
+            'url'   =>  $requestUrl,
+            'method'=>  $requestMethod
+        );
+        return $curlInfo;
+    }
+
+    /**
+     * @param $requestUrl
+     * @param $method
+     * @param array $params
+     * @return bool
+     * 发送curl请求
+     */
+    public static function curl($requestUrl, $method, $params = array())
+    {
+        $curlInstance = new Curl($requestUrl);
+        if ('post' == strtolower($method)) {
+            $re = $curlInstance->post($requestUrl, $params);
+        } else {
+            $re = $curlInstance->get($requestUrl, $params);
+        }
+        if ($re) {
+            $returnData = json_decode($re, true);
+            if ($returnData['error_code'] == 0) {
+                return $returnData['data'];
+            }
+            return false;
+        } else {
+            return false;
+        }
     }
 }
