@@ -24,6 +24,9 @@ class Admin extends Controller
      */
     public function showAddAdmin()
     {
+        $idInfo = IdWorker::getId(array());
+        var_dump($idInfo);die;
+        var_dump(decrypt($idInfo['encode_id']));
         return view('admin/showAddAdmin');
     }
 
@@ -35,6 +38,8 @@ class Admin extends Controller
             'mail'  =>  'required',
             'role'  =>  'required',
         ]);
+
+        $idInfo = IdWorker::getId();
         var_dump($r);die;
     }
 }

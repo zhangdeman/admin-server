@@ -11,10 +11,10 @@ namespace App\Library;
 class IdWorker extends BaseLibrary
 {
 
-    public static function getId()
+    public static function getId($params)
     {
         $requestInfo = self::getRequestUrl('GET_ID');
-        return self::curl($requestInfo['url'], $requestInfo['method']);
+        return self::curl($requestInfo['url'], $requestInfo['method'], $params);
     }
 }
 
