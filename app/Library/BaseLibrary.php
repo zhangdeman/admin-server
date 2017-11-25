@@ -11,6 +11,11 @@ use Curl\Curl;
 class BaseLibrary
 {
     public static $instance = null;
+    //请求错误码
+    protected static $errorCode = 0;
+    //请求错误信息
+    protected static $errorMsg = '';
+
     public function __construct()
     {
     }
@@ -89,12 +94,52 @@ class BaseLibrary
         }
         if ($re) {
             $returnData = json_decode($re, true);
+            self::setErrorCode($returnData['error_code']);
+            self::setErrorMsg($returnData['error_msg']);
             if ($returnData['error_code'] == 0) {
                 return $returnData['data'];
             }
             return false;
         } else {
+            self::setErrorCode(999);
+            self::setErrorMsg('请求异常');
             return false;
         }
+    }
+
+    /**
+     * 设置请求错误码
+     * @param $errorCode
+     */
+    public static function setErrorCode($errorCode)
+    {
+        self::$errorCode = $errorCode;
+    }
+
+    /**
+     * 设置请求错误信息
+     * @param $errorMsg
+     */
+    public static function setErrorMsg($errorMsg)
+    {
+        self::$errorMsg = $errorMsg;
+    }
+
+    /**
+     * 获取错误码
+     * @return int
+     */
+    public static function getErrorCode()
+    {
+        return self::$errorCode;
+    }
+
+    /**
+     * 获取错误信息
+     * @return string
+     */
+    public static function getErrorMsg()
+    {
+        return self::$errorMsg;
     }
 }
