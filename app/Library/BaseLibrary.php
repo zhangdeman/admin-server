@@ -62,38 +62,55 @@ class BaseLibrary
     }
 
     /**
-     * 获取请求的URL
-     * @param string $requestUri
-     * @return string
-     */
-    public static function getRequestUrl($requestUri='')
-    {
-        $requestUrl = env('BASE_PROTOCOL').'://'.env('BASE_INTERFACE_IP').':'.env('BASE_INTERFACE_PORT').env($requestUri.'_URL');
-        $requestMethod = env($requestUri.'_METHOD');
-        $curlInfo = array(
-            'url'   =>  $requestUrl,
-            'method'=>  $requestMethod
-        );
-        return $curlInfo;
-    }
-
-    /**
-     * @param $requestUrl
-     * @param $method
-     * @param array $params
+     * @param $configKey 请求的配置
      * @return bool
      * 发送curl请求
      */
-    public static function curl($requestUrl, $method, $params = array())
+    public static function curl($configKey, $params = array())
     {
-        $curlInstance = new Curl($requestUrl);
-        if ('post' == strtolower($method)) {
-            $re = $curlInstance->post($requestUrl, $params);
-        } else {
-            $re = $curlInstance->get($requestUrl, $params);
+        $baseConfig = config('api.base');
+        $config = config("api.{$configKey}");
+        if (empty($baseConfig) || empty($config)) {
+            //设置错误码
+            return false;
         }
-        if ($re) {
-            $returnData = json_decode($re, true);
+        $requestUrl = "{$baseConfig['protocol']}://{$baseConfig['ip']}:{$baseConfig['port']}";
+        $method = $config['method'];
+        $headers = $config['header'];
+        $options = $config['options'];
+        $connectTime = $config['connect_time_out'];
+        $executeTime = $config['execute_time_out'];
+        $retryTimes = $config['retry_times'];
+
+        $curlInstance = new Curl($requestUrl);
+        $curlInstance->setHeaders($headers);
+        $curlInstance->setOpts($options);
+        if ($connectTime > 0) {
+            //设置连接超时时间
+            $curlInstance->setConnectTimeout($connectTime);
+        }
+
+        if ($executeTime > 0) {
+            //设置请求超时时间
+            $curlInstance->setTimeout($executeTime);
+        }
+
+
+        $requestResult = false;
+        for ($reqTime = 0; $reqTime <= $retryTimes; $reqTime++) {
+            if ('post' == strtolower($method)) {
+                $requestResult = $curlInstance->post($requestUrl, $params);
+            } else {
+                $requestResult = $curlInstance->get($requestUrl, $params);
+            }
+            if (!empty($requestResult)) {
+                break;
+            }
+        }
+
+
+        if ($requestResult) {
+            $returnData = json_decode($requestResult, true);
             self::setErrorCode($returnData['error_code']);
             self::setErrorMsg($returnData['error_msg']);
             if ($returnData['error_code'] == 0) {
