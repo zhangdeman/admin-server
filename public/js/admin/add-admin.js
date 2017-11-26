@@ -62,6 +62,7 @@ var dealAddAdmin = {
             }
 
             $.ajax({
+                headers: { 'X-CSRF-TOKEN' : _token },
                 type: 'POST',
                 url: '/doAddAdmin',
                 data: {
@@ -76,7 +77,11 @@ var dealAddAdmin = {
                 },
                 dataType: "json",
                 success: function (data) {
-                    dealAddAdmin._setAddAdminErrorMsg("alert-success", dealAddAdmin.REQUEST_SUCCESS);
+                    if (data.error_code && data.error_code == 0) {
+                        dealAddAdmin._setAddAdminErrorMsg("alert-success", dealAddAdmin.REQUEST_SUCCESS);
+                    } else {
+                        dealAddAdmin._setAddAdminErrorMsg("alert-danger", data.error_msg+data.error_code);
+                    }
                 },
                 error : function () {
                     dealAddAdmin._setAddAdminErrorMsg("alert-danger", dealAddAdmin.REQUEST_ERROR);

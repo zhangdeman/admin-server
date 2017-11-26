@@ -35,5 +35,5 @@ Route::get('showAddAdmin', function () {
 //添加管理员
 Route::post('doAddAdmin', function (Request $request) {
     $instance = new App\Http\Controllers\Admin();
-    return $instance->doAddAdmin($request);
+    $instance->doAddAdmin($request);
 });
