@@ -188,14 +188,34 @@
 
             <p>添加管理员，请慎重操作.</p>
 
-            <form method="post" action="/doAddAdmin">
+            <div class="block-area hidden" id="show-op-result">
+                <h3 class="block-title">操作结果</h3>
+
+                <!--div class="alert alert-success">
+                    Well done! You successfully read this important alert message.
+                </div>
+
+                <div class="alert alert-info">
+                    Heads up! This alert needs your attention, but it's not super important.
+                </div>
+
+                <div class="alert alert-warning">
+                    Warning! Best check yo self, you're not looking too good.
+                </div>
+
+                <div class="alert alert-danger">
+                    Oh snap! Change a few things up and try submitting again.
+                </div-->
+
+            </div>
+
             <input class="form-control input-lg m-b-10" type="text" name="admin-real-name" id="admin-real-name" placeholder="真实姓名">
             <input class="form-control input-lg m-b-10" type="text" name="admin-nickname" id="admin-nickname" placeholder="管理员昵称">
             <div class="block-area" id="select">
                 <select id="admin-role" name="admin-role" class="form-control input-lg m-b-10">
-                    <option value="0">超级管理员</option>
-                    <option value="1">普通管理员</option>
-                    <option value="2">普通用户</option>
+                    @foreach($role_config as $key => $show)
+                        <option value="{{$key}}">{{$show}}</option>
+                    @endforeach
                 </select>
             </div>
             <input class="form-control input-lg m-b-10" type="password" id="admin-password" name="dmin-password" placeholder="登录密码">
@@ -207,9 +227,8 @@
                 <textarea class="form-control overflow" rows="3" id="admin-remark" name="admin-remark" placeholder="管理员备注信息"></textarea>
             </div>
             <br>
-            <input class="form-control input-lg m-b-1" type="submit" value="添加" id="add-admin-button">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-            </form>
+            <input class="form-control input-lg m-b-1" type="button" value="添加" id="add-admin-button">
+                <input type="hidden" name="_token" id="csrf_token" value="{{ csrf_token() }}"/>
         </div>
     </section>
 </section>
