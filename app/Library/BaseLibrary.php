@@ -7,6 +7,7 @@
  */
 namespace App\Library;
 use Curl\Curl;
+use Illuminate\Contracts\Logging\Log;
 
 class BaseLibrary
 {
@@ -52,6 +53,8 @@ class BaseLibrary
      */
     public static function formatParams($params)
     {
+        //此处统一添加请求来源
+        $params['from'] = 'admin_server';
         foreach ($params as $key => $value) {
             if (is_bool($value)) {
                 $params[$key] = intval($value);
@@ -74,7 +77,8 @@ class BaseLibrary
             //设置错误码
             return false;
         }
-        $requestUrl = "{$baseConfig['protocol']}://{$baseConfig['ip']}:{$baseConfig['port']}";
+        $requestUrl = "{$baseConfig['protocol']}://{$baseConfig['ip']}:{$baseConfig['port']}{$config['uri']}";
+
         $method = $config['method'];
         $headers = $config['header'];
         $options = $config['options'];
