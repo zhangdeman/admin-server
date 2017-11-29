@@ -13,5 +13,9 @@ class Admin extends BaseLibrary
         parent::__construct();
     }
 
-    public static function addAdmin($adminInfo){}
+    public static function addAdmin($adminInfo)
+    {
+        $adminInfo = self::formatParams($adminInfo);
+        return self::curl('add_admin');
+    }
 }
