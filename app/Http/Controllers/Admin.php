@@ -6,11 +6,9 @@
  * Time: 11:14
  */
 namespace App\Http\Controllers;
-use Illuminate\Contracts\Logging\Log;
-use Illuminate\Http\Request;
 use App\Library\IdWorker;
-use Curl\Curl;
-use App\Library\AuthClient;
+use Illuminate\Http\Request;
+use \App\Library\OpAdmin;
 
 class Admin extends Controller
 {
@@ -24,22 +22,35 @@ class Admin extends Controller
      */
     public function showAddAdmin()
     {
-        $idInfo = IdWorker::getId(array());
-        var_dump($idInfo);die;
-        var_dump(decrypt($idInfo['encode_id']));
-        return view('admin/showAddAdmin');
+        $roleConfig = config('role.list');
+        return view('admin/showAddAdmin')->with('role_config', $roleConfig);
     }
 
     public function doAddAdmin(Request $request)
     {
-        $r = $this->validate($request,[
-            'name'  =>  'required',
-            'phone' =>  'required',
-            'mail'  =>  'required',
-            'role'  =>  'required',
-        ]);
+        /*$validateResult = $this->validate($request,array(
+            'name' => 'required',
+            'nickname' => 'required',
+            'role' => 'required',
+            'password' => 'required',
+            'confirm_password' => 'required',
+            'mail' => 'required',
+            'phone' => 'required',
+        ));*/
 
-        $idInfo = IdWorker::getId();
-        var_dump($r);die;
+        $requestParams = $request->all();
+        $adminId = IdWorker::getId(array());
+        $requestParams['id'] = $adminId['id'];
+        $requestParams['encode_id'] = $adminId['encode_id'];
+
+        $addResult = OpAdmin::addAdmin($requestParams);
+
+        echo json_encode(array('error_code' => OpAdmin::getErrorCode(),'id' => $adminId['id'], 'error_msg' => OpAdmin::getErrorMsg()));
+        //exit();
+
+
+
+        //$idInfo = IdWorker::getId();
+        //var_dump($validateResult);die;
     }
 }

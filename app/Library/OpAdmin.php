@@ -6,7 +6,7 @@
  * Time: 11:10
  */
 namespace App\Library;
-class Admin extends BaseLibrary
+class OpAdmin extends BaseLibrary
 {
     public function __construct()
     {
@@ -16,6 +16,6 @@ class Admin extends BaseLibrary
     public static function addAdmin($adminInfo)
     {
         $adminInfo = self::formatParams($adminInfo);
-        return self::curl('add_admin');
+        return self::curl('add_admin', $adminInfo);
     }
 }
