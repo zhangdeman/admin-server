@@ -13,7 +13,7 @@ class IdWorker extends BaseLibrary
 
     public static function getId($params = array())
     {
-        return self::curl('get_id');
+        return self::curl('get_id', $params);
     }
 }
 

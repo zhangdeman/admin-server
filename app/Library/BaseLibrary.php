@@ -99,7 +99,6 @@ class BaseLibrary
             $curlInstance->setTimeout($executeTime);
         }
 
-
         $requestResult = false;
         for ($reqTime = 0; $reqTime <= $retryTimes; $reqTime++) {
             if ('post' == strtolower($method)) {
@@ -112,8 +111,9 @@ class BaseLibrary
             }
         }
 
+        $httpCode = $curlInstance->getInfo(CURLINFO_HTTP_CODE);
 
-        if ($requestResult) {
+        if (200 == $httpCode && $requestResult) {
             $returnData = json_decode($requestResult, true);
             self::setErrorCode($returnData['error_code']);
             self::setErrorMsg($returnData['error_msg']);

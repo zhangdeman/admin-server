@@ -40,7 +40,7 @@ var dealAddAdmin = {
                 return false;
             }
             if (adminPassword != adminConfirmPassword) {
-                this._setAddAdminErrorMsg("alert-warning", dealAddAdmin.DIFF_PASSWORD);
+                dealAddAdmin._setAddAdminErrorMsg("alert-warning", dealAddAdmin.DIFF_PASSWORD);
                 return false;
             }
 
@@ -71,7 +71,8 @@ var dealAddAdmin = {
                     'role' : adminRole,
                     'phone' : adminPhone,
                     'mail' : adminMail,
-                    'confirm_password' : adminConfirmPassword,
+                    'password' : md5(adminPassword),
+                    'confirm_password' : md5(adminConfirmPassword),
                     '_token' : _token,
                     'remark' : adminRemark,
                 },
