@@ -21,9 +21,9 @@ Route::get('login', function () {
     return $instance->showLogin();
 });
 
-Route::post('doLogin', function () {
+Route::post('doLogin', function (Request $request) {
     $instance = new App\Http\Controllers\Login();
-    return $instance->doLogin();
+    return $instance->doLogin($request);
 });
 
 //展示添加管理员页面

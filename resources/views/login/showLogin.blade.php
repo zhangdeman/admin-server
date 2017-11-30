@@ -28,24 +28,24 @@
 
             <!-- Login -->
             <div id="loginCheck">
-            <form method="post" action="doLogin" class="box tile animated active" id="box-login">
+            <div class="box tile animated active" id="box-login">
                 <h2 class="m-t-0 m-b-15">登录</h2>
-                <input type="text" class="login-control m-b-10" placeholder="手机号或邮箱" v-model="account_value">
-                <input type="password" class="login-control" placeholder="密码" v-model="password_value">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                <input type="text" id="admin-account" class="login-control m-b-10" placeholder="手机号或邮箱">
+                <input type="password" id="admin-password" class="login-control" placeholder="密码">
+                <input type="hidden" id="csrf_token" name="_token" value="{{ csrf_token() }}"/>
                 <div class="checkbox m-b-20">
                     <label>
                         <input type="checkbox">
                         记住密码
                     </label>
                 </div>
-                <button class="btn btn-sm m-r-5">登录</button>
+                <button class="btn btn-sm m-r-5" id="admin-login">登录</button>
 
                 <small>
                     <a class="box-switcher" data-switch="box-register" href="">没有账号?</a> or
                     <a class="box-switcher" data-switch="box-reset" href="">忘记密码?</a>
                 </small>
-            </form>
+            </div>
             </div>
 
                 <!-- Register -->
@@ -67,7 +67,7 @@
             <form class="box animated tile" id="box-reset">
                 <h2 class="m-t-0 m-b-15">Reset Password</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
-                <input type="email" class="login-control m-b-20" placeholder="Email Address">
+                <input type="text" class="login-control m-b-20" placeholder="邮箱或手机号">
 
                 <button class="btn btn-sm m-r-5">Reset Password</button>
 
@@ -88,11 +88,10 @@
         <!-- All JS functions -->
         <script src="/bootstrap/js/functions.js"></script>
 
-        <script src="/bootstrap/js/vue-2.5.2.js"></script>
 
-        <script src="/bootstrap/js/page-/bootstrap/js/md5.js"></script>
+        <script src="/js/common/md5.js"></script>
 
-        <script src="/bootstrap/js/page-/bootstrap/js/login.js"></script>
+        <script src="/js/admin/login-admin.js"></script>
 
     </body>
 </html>

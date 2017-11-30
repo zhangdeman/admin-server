@@ -7,11 +7,13 @@
  */
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Themis\Admin\Admin;
+use App\Library\AuthClient;
 class Login extends Controller
 {
     public function __construct()
     {
-
+        parent::__construct();
     }
 
     /**
@@ -24,8 +26,26 @@ class Login extends Controller
         return view('login/showLogin');
     }
 
-    public function doLogin()
+    public function doLogin(Request $request)
     {
+        $account = trim($request->input('account'));
+        if (is_numeric($account)) {
+            $accountType = Admin::LOGIN_TYPE_PHONE;
+        } else {
+            $accountType = Admin::LOGIN_TYPE_MAIL;
+        }
+
+        $requestParam = array(
+            'login_type'    =>  $accountType,
+            'account'       =>  $account,
+            'password'      =>  trim($request->input('password'))
+        );
+
+        $re = AuthClient::adminLogin($requestParam);
+
+        if (false == $re) {
+            $this->error(AuthClient::getErrorCode(), AuthClient::getErrorMsg());
+        }
         return "登录验证";
     }
 }

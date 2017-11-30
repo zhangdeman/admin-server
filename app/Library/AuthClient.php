@@ -29,5 +29,15 @@ class AuthClient extends BaseLibrary
         return '';
     }
 
+    /**
+     * @param $params
+     * @return bool
+     * 登录
+     */
+    public static function adminLogin($params)
+    {
+        return self::curl('admin_login', $params);
+    }
+
 
 }

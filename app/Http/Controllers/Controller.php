@@ -7,23 +7,54 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Route;
 use Themis\Api\Out;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public static $requestInstance = null;
+
     //管理员信息
     public $adminInfo = array();
+
+    //不验证token接口 login
+    public static $WHITE_INTERFACE = array(
+        'App\\Http\\Controllers\\Login'
+    );
+
+    //当前控制器
+    public static $CURRENT_CLASS = '';
+
     public function __construct()
     {
+        if (is_null(self::$requestInstance)) {
+            self::$requestInstance = new Request();
+        }
 
+        if (empty(self::$CURRENT_CLASS)) {
+            self::$CURRENT_CLASS = get_class($this);
+        }
+
+        $this->validateToken();
     }
 
-    public function getAdminInfo(Request $request)
+    /**
+     * 验证token
+     * @return bool
+     */
+    public function validateToken()
     {
-        $adminId = $request->input('admin_id');
-        return array();
+        if (in_array(self::$CURRENT_CLASS, self::$WHITE_INTERFACE)) {
+            //不验证token
+            return true;
+        }
+
+        $token = self::$requestInstance->input('admin_token');
+
     }
+
 
     /**
      * 输出成功的信息
