@@ -22,7 +22,7 @@
     <link href="/bootstrap/css/icons.css" rel="stylesheet">
     <link href="/bootstrap/css/generics.css" rel="stylesheet">
 </head>
-<body id="skin-blur-violate">
+<body id="skin-blur-greenish">
 <header id="header" class="media">
     <a href="" id="menu-toggle"></a>
     <a class="logo pull-left" href="index.html">管理系统</a>
