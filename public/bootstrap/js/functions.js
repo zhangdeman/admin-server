@@ -4,17 +4,20 @@ $(document).ready(function(){
     -----------------------------------------------------------*/
     
     var settings =  '<a id="settings" href="#changeSkin" data-toggle="modal">' +
-			'<i class="fa fa-gear"></i> Change Skin' +
+			'<i class="fa fa-gear"></i> 变更主题' +
 		    '</a>' +   
 		    '<div class="modal fade" id="changeSkin" tabindex="-1" role="dialog" aria-hidden="true">' +
 			'<div class="modal-dialog modal-lg">' +
 			    '<div class="modal-content">' +
 				'<div class="modal-header">' +
 				    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
-				    '<h4 class="modal-title">Change Template Skin</h4>' +
+				    '<h4 class="modal-title">更改主题</h4>' +
 				'</div>' +
 				'<div class="modal-body">' +
 				    '<div class="row template-skins">' +
+                    '<a data-skin="skin-blur-greenish" class="col-sm-2 col-xs-4" href="">' +
+                    '<img src="/bootstrap/img/skin-greenish.jpg" alt="">' +
+                    '</a>' +
 					'<a data-skin="skin-blur-violate" class="col-sm-2 col-xs-4" href="">' +
 					    '<img src="/bootstrap/img/skin-violate.jpg" alt="">' +
 					'</a>' +
@@ -23,9 +26,6 @@ $(document).ready(function(){
 					'</a>' +
 					'<a data-skin="skin-blur-city" class="col-sm-2 col-xs-4" href="">' +
 					    '<img src="/bootstrap/img/skin-city.jpg" alt="">' +
-					'</a>' +
-					'<a data-skin="skin-blur-greenish" class="col-sm-2 col-xs-4" href="">' +
-					    '<img src="/bootstrap/img/skin-greenish.jpg" alt="">' +
 					'</a>' +
 					'<a data-skin="skin-blur-night" class="col-sm-2 col-xs-4" href="">' +
 					    '<img src="/bootstrap/img/skin-night.jpg" alt="">' +
@@ -612,8 +612,8 @@ $(window).load(function(){
 Date Time Widget
 -----------------------------------------------------------*/
 (function(){
-    var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-    var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    var monthNames = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" ];
+    var dayNames= ["日","一","二","三","四","五","六"]
 
     // Create a newDate() object
     var newDate = new Date();
