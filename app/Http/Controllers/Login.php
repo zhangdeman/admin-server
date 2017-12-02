@@ -22,7 +22,6 @@ class Login extends Controller
      */
     public function showLogin()
     {
-        csrf_token();
         return view('login/showLogin');
     }
 

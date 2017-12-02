@@ -37,3 +37,9 @@ Route::post('doAddAdmin', function (Request $request) {
     $instance = new App\Http\Controllers\Admin();
     $instance->doAddAdmin($request);
 });
+
+//显示添加文章页面
+Route::get('article/showAddArticle', function (Request $request) {
+    $instance = new App\Http\Controllers\Article();
+    return $instance->showAddArticle($request);
+});
