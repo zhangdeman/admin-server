@@ -38,6 +38,12 @@ Route::post('doAddAdmin', function (Request $request) {
     $instance->doAddAdmin($request);
 });
 
+//获取文章类型列表
+Route::get('article/getArticleKind', function (Request $request) {
+    $instance = new App\Http\Controllers\Article();
+    return $instance->getKindList($request);
+});
+
 //显示添加文章页面
 Route::get('article/showAddArticle', function (Request $request) {
     $instance = new App\Http\Controllers\Article();

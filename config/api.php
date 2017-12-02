@@ -48,4 +48,16 @@ return [
         'header'            =>  array(),
         'options'           =>  array()
     ),
+
+    //获取文章类别
+    'get_article_kind' => array(
+        'uri'   =>  '/api/article/getArticleKind',
+        'method'=> 'get',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
 ];

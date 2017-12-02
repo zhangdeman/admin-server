@@ -26,24 +26,38 @@
                 <h3 class="block-title">操作结果</h3>
             </div>
 
-            <!-- 加载编辑器的容器 -->
-            <script id="container" name="content" type="text/plain">
+            <div class="block-area input-lg m-b-10" id="set-parent-kind">
+                <select id="parent-kind" name="parent_kind" class="form-control input-lg m-b-10">
+
+                </select>
+            </div>
+
+            <div class="block-area input-lg m-b-10" id="set-son-kind">
+                <select id="son-kind" name="parent_kind" class="form-control input-lg m-b-10">
+
+                </select>
+            </div>
+
+        </div>
+
+        <div class="block-area" id="text-input">
+        <!-- 加载编辑器的容器 -->
+        <script id="container" name="content" type="text/plain">
                 发布文章
             </script>
 
-            <!-- 配置文件 -->
-            <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
-            <!-- 编辑器源码文件 -->
-            <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
-            <!-- 实例化编辑器 -->
-            <script type="text/javascript">
-                var ue = UE.getEditor('container');
-            </script>
-
+        <!-- 配置文件 -->
+        <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+        <!-- 编辑器源码文件 -->
+        <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+        <!-- 实例化编辑器 -->
+        <script type="text/javascript">
+            var ue = UE.getEditor('container');
+        </script>
         </div>
     </section>
 </section>
 
 @include('common/footer')
-<script type="text/javascript" src="/js/admin/add-article.js"></script>
+<script type="text/javascript" src="/js/article/add-article.js"></script>
 
