@@ -42,13 +42,16 @@ var dealLoginAdmin = {
                 },
                 dataType: "json",
                 success: function (data) {
-                    if (data.error_code && data.error_code == 0) {
-                        dealLoginAdmin._setLoginAdminErrorMsg("alert-success", dealLoginAdmin.REQUEST_SUCCESS);
+                    var code = data.error_code;
+                    if (code == 0) {
+                        Cookie._setCookie('deman_club_token', data.data.token);
+                        window.location.href = '/index';
                     } else {
                         dealLoginAdmin._setLoginAdminErrorMsg("alert-danger", data.error_msg+data.error_code);
                     }
                 },
                 error : function () {
+                    alert(111);
                     dealLoginAdmin._setLoginAdminErrorMsg("alert-danger", dealLoginAdmin.REQUEST_ERROR);
                 }
             });

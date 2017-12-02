@@ -41,11 +41,12 @@ class Login extends Controller
             'password'      =>  trim($request->input('password'))
         );
 
-        $re = AuthClient::adminLogin($requestParam);
+        $loginResult = AuthClient::adminLogin($requestParam);
 
-        if (false == $re) {
+        if (false == $loginResult) {
             $this->error(AuthClient::getErrorCode(), AuthClient::getErrorMsg());
         }
-        return "登录验证";
+
+        $this->success($loginResult);
     }
 }

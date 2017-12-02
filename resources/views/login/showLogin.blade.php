@@ -21,7 +21,9 @@
         <section id="login">
             <header>
                 <h1>管理员登录</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
+                <div class="block-area hidden" id="show-op-result">
+                    <h3 class="block-title">操作结果</h3>
+                </div>
             </header>
 
             <div class="clearfix"></div>
@@ -90,6 +92,7 @@
 
 
         <script src="/js/common/md5.js"></script>
+        <script src="/js/common/cookie.js"></script>
 
         <script src="/js/admin/login-admin.js"></script>
 
