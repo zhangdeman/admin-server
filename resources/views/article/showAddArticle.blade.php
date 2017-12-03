@@ -30,17 +30,14 @@
                 <input class="hidden" type="text" name="_csrf" id="csrf_token" value="{{csrf_token()}}">
             </div>
 
-            <div class="block-area input-lg m-b-10" id="set-parent-kind">
                 <select id="parent-kind" name="parent_kind" class="form-control input-lg m-b-10">
 
                 </select>
-            </div>
 
-            <div class="block-area input-lg m-b-10" id="set-son-kind">
+
                 <select id="son-kind" name="son_kind" class="form-control input-lg m-b-10">
 
                 </select>
-            </div>
 
         </div>
 

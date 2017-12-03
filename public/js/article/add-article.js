@@ -74,7 +74,7 @@ var article = {
      * @private
      */
     _selectOnChanged : function (kindList) {
-        $("#set-parent-kind").change(function(){
+        $("#parent-kind").change(function(){
             var parentKindValue = $("#parent-kind").val();
             article._setSonKind(kindList, parentKindValue);
         });
@@ -121,10 +121,11 @@ var article = {
                 },
                 dataType: "json",
                 success: function (data) {
-                    var kindList = data.data;
+                    alert("succ");
+                    /*var kindList = data.data;
                     article._setParentKind(kindList);
                     article._setSonKind(kindList, 1);
-                    article._selectOnChanged(kindList, 1);
+                    article._selectOnChanged(kindList, 1);*/
                 },
                 error : function () {
 
@@ -142,6 +143,8 @@ var article = {
         $("#show-op-result").removeClass('hidden');
         $("#show-op-result").html("<div class=\"alert " + level + "\">\n" + msg + ".</div>");
     },
+
+
 };
 
 //首次载入初始化
