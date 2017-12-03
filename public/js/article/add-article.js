@@ -6,13 +6,14 @@ var article = {
     init : function () {
         //注册添加文章事件
         article._addArticle();
+        var adminToken = Cookie._getCookie('deman_club_token');
 
         //获取文章列表
         $.ajax({
             type: 'GET',
             url: '/article/getArticleKind',
             data: {
-
+                'admin_token' : adminToken,
             },
             dataType: "json",
             success: function (data) {

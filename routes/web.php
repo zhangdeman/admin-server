@@ -16,42 +16,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', function () {
-    $instance = new App\Http\Controllers\Login();
+Route::get('login', function (Request $request) {
+    $instance = new App\Http\Controllers\Login($request);
     return $instance->showLogin();
 });
 
 Route::post('doLogin', function (Request $request) {
-    $instance = new App\Http\Controllers\Login();
+    $instance = new App\Http\Controllers\Login($request);
     return $instance->doLogin($request);
 });
 
 //展示添加管理员页面
-Route::get('showAddAdmin', function () {
-    $instance = new App\Http\Controllers\Admin();
+Route::get('showAddAdmin', function (Request $request) {
+    $instance = new App\Http\Controllers\Admin($request);
     return $instance->showAddAdmin();
 });
 
 //添加管理员
 Route::post('doAddAdmin', function (Request $request) {
-    $instance = new App\Http\Controllers\Admin();
+    $instance = new App\Http\Controllers\Admin($request);
     $instance->doAddAdmin($request);
 });
 
 //获取文章类型列表
 Route::get('article/getArticleKind', function (Request $request) {
-    $instance = new App\Http\Controllers\Article();
-    return $instance->getKindList($request);
+    $instance = new App\Http\Controllers\Article($request);
+    $instance->getKindList($request);
 });
 
 //显示添加文章页面
 Route::get('article/showAddArticle', function (Request $request) {
-    $instance = new App\Http\Controllers\Article();
+    $instance = new App\Http\Controllers\Article($request);
     return $instance->showAddArticle($request);
 });
 
 //添加文章
 Route::post('article/addArticle', function (Request $request) {
     $instance = new App\Http\Controllers\Article($request);
-    return $instance->addArticle($request);
+    $instance->addArticle($request);
 });

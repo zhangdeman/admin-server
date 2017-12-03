@@ -46,8 +46,25 @@ class Article extends Controller
     public function addArticle(Request $request)
     {
         $idInfo = IdWorker::getId();
-        $id = $idInfo['id'];
-        $params = array();
-        $this->success($request->all());
+
+        if (empty($idInfo)) {
+            $this->error(IdWorker::getErrorCode(), IdWorker::getErrorMsg());
+        }
+
+        $requestParams = array(
+            'id'    =>  $idInfo['id'],
+            'plain_content' => $request->input('plain_content'),
+            'text_content'  => $request->input('text_content'),
+            'parent_kind'   => $request->input('parent_kind'),
+            'son_kind'      => $request->input('son_kind'),
+            'create_ip'     => $request->getClientIp(),
+            'admin_id'      => $this->adminInfo['id'],
+        );
+
+        $addArticleResult = ArticleLib::addArticle($requestParams);
+        if (empty($addArticleResult)) {
+            $this->error(ArticleLib::getErrorCode(), ArticleLib::getErrorMsg());
+        }
+        $this->success($addArticleResult);
     }
 }

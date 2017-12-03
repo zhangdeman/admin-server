@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Cookie;
 use Route;
 use Themis\Api\Out;
 
@@ -50,7 +51,9 @@ class Controller extends BaseController
             return true;
         }
 
+
         $token = self::$requestInstance->input('admin_token');
+        $token = empty($token) ? $_COOKIE['deman_club_token'] : $token;
 
         $validateTokenResult = AuthClient::checkAdminInfo(array('token' => $token));
 
