@@ -16,6 +16,17 @@ return [
         'port'      =>  '4888',
     ),
 
+    //获取id
+    'validate_token' => array(
+        'uri'   =>  '/api/passport/validateToken',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
     //添加管理员
     'add_admin' =>  array(
         'uri'   =>  '/api/admin/addAdmin',

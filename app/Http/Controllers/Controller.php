@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\AuthClient;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -27,11 +28,9 @@ class Controller extends BaseController
     //当前控制器
     public static $CURRENT_CLASS = '';
 
-    public function __construct()
+    public function __construct(Request $request)
     {
-        if (is_null(self::$requestInstance)) {
-            self::$requestInstance = new Request();
-        }
+        self::$requestInstance = $request;
 
         if (empty(self::$CURRENT_CLASS)) {
             self::$CURRENT_CLASS = get_class($this);
@@ -53,6 +52,13 @@ class Controller extends BaseController
 
         $token = self::$requestInstance->input('admin_token');
 
+        $validateTokenResult = AuthClient::checkAdminInfo(array('token' => $token));
+
+        if (empty($validateTokenResult)) {
+            $this->error(AuthClient::getErrorCode(), AuthClient::getErrorMsg());
+        }
+
+        $this->adminInfo = $validateTokenResult;
     }
 
 

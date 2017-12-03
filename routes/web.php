@@ -49,3 +49,9 @@ Route::get('article/showAddArticle', function (Request $request) {
     $instance = new App\Http\Controllers\Article();
     return $instance->showAddArticle($request);
 });
+
+//添加文章
+Route::post('article/addArticle', function (Request $request) {
+    $instance = new App\Http\Controllers\Article($request);
+    return $instance->addArticle($request);
+});

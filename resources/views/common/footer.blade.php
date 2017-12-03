@@ -19,5 +19,6 @@
 
 <!-- All JS functions -->
 <script src="/bootstrap/js/functions.js"></script>
+<script src="/js/common/cookie.js"></script>
 </body>
 </html>

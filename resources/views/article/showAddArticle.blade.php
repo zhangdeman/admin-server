@@ -25,6 +25,10 @@
             <div class="block-area hidden" id="show-op-result">
                 <h3 class="block-title">操作结果</h3>
             </div>
+            <div class="block-area">
+                <input class="form-control input-lg m-b-10" type="text" name="article-title" id="article-title" placeholder="文章标题">
+                <input class="hidden" type="text" name="_csrf" id="csrf_token" value="{{csrf_token()}}">
+            </div>
 
             <div class="block-area input-lg m-b-10" id="set-parent-kind">
                 <select id="parent-kind" name="parent_kind" class="form-control input-lg m-b-10">
@@ -33,7 +37,7 @@
             </div>
 
             <div class="block-area input-lg m-b-10" id="set-son-kind">
-                <select id="son-kind" name="parent_kind" class="form-control input-lg m-b-10">
+                <select id="son-kind" name="son_kind" class="form-control input-lg m-b-10">
 
                 </select>
             </div>
@@ -43,8 +47,8 @@
         <div class="block-area" id="text-input">
         <!-- 加载编辑器的容器 -->
         <script id="container" name="content" type="text/plain">
-                发布文章
-            </script>
+
+        </script>
 
         <!-- 配置文件 -->
         <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
@@ -54,6 +58,9 @@
         <script type="text/javascript">
             var ue = UE.getEditor('container');
         </script>
+        </div>
+        <div class="block-area">
+            <input class="form-control input-lg m-b-10" type="button" name="add-article" id="add-article" value="添加文章">
         </div>
     </section>
 </section>
