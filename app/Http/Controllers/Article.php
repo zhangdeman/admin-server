@@ -53,6 +53,7 @@ class Article extends Controller
 
         $requestParams = array(
             'id'    =>  $idInfo['id'],
+            'title' =>  $request->input('title'),
             'plain_content' => $request->input('plain_content'),
             'text_content'  => $request->input('text_content'),
             'parent_kind'   => $request->input('parent_kind'),
