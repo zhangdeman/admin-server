@@ -1,24 +1,14 @@
-<!-- Javascript Libraries -->
-<!-- jQuery -->
-<script src="/bootstrap/js/jquery.min.js"></script> <!-- jQuery Library -->
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{{URL::asset('html_asset/js/jquery.js')}}"></script>
+<script src="{{URL::asset('html_asset/js/bootstrap.min.js')}}"></script>
 
-<!-- Bootstrap -->
-<script src="/bootstrap/js/bootstrap.min.js"></script>
-
-<!--  Form Related -->
-<script src="/bootstrap/js/icheck.js"></script> <!-- Custom Checkbox + Radio -->
-<script src="/bootstrap/js/autosize.min.js"></script> <!-- Textarea autosize -->
-
-<!-- UX -->
-<script src="/bootstrap/js/scroll.min.js"></script> <!-- Custom Scrollbar -->
-
-<!-- Other -->
-<script src="/bootstrap/js/calendar.min.js"></script> <!-- Calendar -->
-<!--script src="/bootstrap/js/feeds.min.js"></script--> <!-- News Feeds -->
+<!--BACKSTRETCH-->
+<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+<script>
+    $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+</script>
 
 
-<!-- All JS functions -->
-<script src="/bootstrap/js/functions.js"></script>
-<script src="/js/common/cookie.js"></script>
 </body>
 </html>
