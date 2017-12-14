@@ -22,6 +22,7 @@
     <!--[if lt IE 9]>
     <script src="{{URL::asset('html_asset/js/html5shiv.js')}}"></script>
     <script src="{{URL::asset('html_asset/js/response.js')}}"></script>
+    <script src="{{URL::asset('js/admin/login-admin.js')}}"></script>
     <![endif]-->
 </head>
 
@@ -34,19 +35,20 @@ MAIN CONTENT
 <div id="login-page">
     <div class="container">
 
-        <form class="form-login" action="index.html">
+        <form class="form-login">
             <h2 class="form-login-heading">管理员登录</h2>
             <div class="login-wrap">
-                <input type="text" class="form-control" placeholder="手机号/邮箱" autofocus>
+                <input type="text" class="form-control" id="admin-account" placeholder="手机号/邮箱" autofocus>
                 <br>
-                <input type="password" class="form-control" placeholder="密码">
+                <input type="password" id="admin-password" class="form-control" placeholder="密码">
                 <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal"> 忘记密码?</a>
 
 		                </span>
                 </label>
-                <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>登录</button>
+                <input type="hidden" value="{{csrf_token()}}" id="csrf_token">
+                <button class="btn btn-theme btn-block" id="admin-login" type="submit"><i class="fa fa-lock"></i>登录</button>
                 <!--hr-->
 
                 <!--div class="login-social-link centered">
@@ -64,7 +66,7 @@ MAIN CONTENT
             </div>
 
             <!-- Modal -->
-            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <!--div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -82,7 +84,7 @@ MAIN CONTENT
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
             <!-- modal -->
 
         </form>
