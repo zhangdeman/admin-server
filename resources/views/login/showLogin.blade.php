@@ -1,4 +1,31 @@
-@include('common/header');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="管理后台">
+
+    <title>管理后台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{URL::asset('html_asset/css/bootstrap.css')}}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{URL::asset('html_asset/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="{{URL::asset('html_asset/css/style.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('html_asset/css/style-responsive.css')}}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{URL::asset('html_asset/js/html5shiv.js')}}"></script>
+    <script src="{{URL::asset('html_asset/js/response.js')}}"></script>
+    <![endif]-->
+</head>
+
+<body>
 
 <!-- **********************************************************************************************************************************************************
 MAIN CONTENT
@@ -63,4 +90,17 @@ MAIN CONTENT
     </div>
 </div>
 
-@include('common/footer');
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{{URL::asset('html_asset/js/jquery.js')}}"></script>
+<script src="{{URL::asset('html_asset/js/bootstrap.min.js')}}"></script>
+
+<!--BACKSTRETCH-->
+<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+<script>
+    $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+</script>
+
+
+</body>
+</html>
