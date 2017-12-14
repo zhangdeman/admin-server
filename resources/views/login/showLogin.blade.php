@@ -47,7 +47,7 @@ MAIN CONTENT
 		                </span>
                 </label>
                 <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>登录</button>
-                <hr>
+                <!--hr-->
 
                 <!--div class="login-social-link centered">
                     <p>or you can sign in via your social network</p>
