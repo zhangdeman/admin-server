@@ -1,64 +1,28 @@
 <!DOCTYPE html>
-<!--[if IE 9 ]>
-<html class="ie9">
-<![endif]-->
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <meta name="format-detection" content="telephone=no">
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="管理后台">
 
-    <meta name="description" content="Violate Responsive Admin Template">
-    <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+    <title>管理后台</title>
 
-    <title>Super Admin Responsive Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{URL::asset('html_asset/css/bootstrap.css')}}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{URL::asset('html_asset/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
 
-    <!-- CSS -->
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/animate.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/form.css" rel="stylesheet">
-    <link href="/bootstrap/css/calendar.css" rel="stylesheet">
-    <link href="/bootstrap/css/style.css" rel="stylesheet">
-    <link href="/bootstrap/css/icons.css" rel="stylesheet">
-    <link href="/bootstrap/css/generics.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{URL::asset('html_asset/css/style.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('html_asset/css/style-responsive.css')}}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body id="skin-blur-greenish">
-<header id="header" class="media">
-    <a href="" id="menu-toggle"></a>
-    <a class="logo pull-left" href="index.html">管理系统</a>
 
-    <div class="media-body">
-        <div class="media" id="top-menu">
-            <div class="pull-left tm-icon">
-                <a data-drawer="messages" class="drawer-toggle" href="">
-                    <i class="sa-top-message"></i>
-                    <i class="n-count animated">5</i>
-                    <span>Messages</span>
-                </a>
-            </div>
-            <div class="pull-left tm-icon">
-                <a data-drawer="notifications" class="drawer-toggle" href="">
-                    <i class="sa-top-updates"></i>
-                    <i class="n-count animated">9</i>
-                    <span>Updates</span>
-                </a>
-            </div>
-
-
-
-            <div id="time" class="pull-right">
-                <span id="hours"></span>
-                :
-                <span id="min"></span>
-                :
-                <span id="sec"></span>
-            </div>
-
-            <div class="media-body">
-                <input type="text" class="main-search">
-            </div>
-        </div>
-    </div>
-</header>
-
-<div class="clearfix"></div>
+<body>
