@@ -48,7 +48,7 @@ MAIN CONTENT
 		                </span>
                 </label>
                 <input type="hidden" value="{{csrf_token()}}" id="csrf_token">
-                <button class="btn btn-theme btn-block" id="admin-login" type="submit"><i class="fa fa-lock"></i>登录</button>
+                <button class="btn btn-theme btn-block" id="admin-login" type="button"><i class="fa fa-lock"></i>登录</button>
                 <!--hr-->
 
                 <!--div class="login-social-link centered">
