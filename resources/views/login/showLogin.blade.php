@@ -24,7 +24,7 @@
     <script src="{{URL::asset('assets/js/html5shiv.js')}}"></script>
     <script src="{{URL::asset('assets/js/response.js')}}"></script>
     <![endif]-->
-    <script src="{{URL::asset('js/admin/login-admin.js')}}"></script>
+    <script src="{{URL::asset('js/common/cookie.js')}}"></script>
 
 </head>
 
@@ -103,6 +103,10 @@ MAIN CONTENT
 <script>
     $.backstretch("assets/img/login-bg.jpg", {speed: 500});
 </script>
+
+<script src="{{URL::asset('js/common/md5.js')}}"></script>
+<script src="{{URL::asset('js/admin/login-admin.js')}}"></script>
+
 
 
 </body>

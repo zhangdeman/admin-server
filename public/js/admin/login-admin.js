@@ -17,7 +17,7 @@ var dealLoginAdmin = {
      */
     _setLoginAdminErrorMsg : function(level, msg) {
         $("#show-op-result").removeClass('hidden');
-        $("#show-op-result").html("<p>" + msg + ".</p>");
+        $("#show-op-result").html("<p class='text-danger'>" + msg + ".</p>");
     },
 
 
