@@ -12,8 +12,9 @@
 */
 
 use \Illuminate\Http\Request;
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/index', function (Request $request) {
+    $instance = new App\Http\Controllers\Index($request);
+    return $instance->index($request);
 });
 
 Route::get('login', function (Request $request) {
