@@ -42,7 +42,7 @@ class Permission extends BaseLibrary
 
                     array(
                         'title' =>  '添加权限',
-                        'href'  =>  '#',
+                        'href'  =>  '/permission/showAddPermission',
                     ),
                 ),
             ),

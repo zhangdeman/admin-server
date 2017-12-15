@@ -7,7 +7,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+            <p class="centered"><a href="#"><img src="{{URL::asset('assets/img/ui-sam.jpg')}}" class="img-circle" width="60"></a></p>
             <h5 class="centered">{{$admin_info['nickname']}}</h5>
 
             <li class="mt">
@@ -101,7 +101,7 @@
 </aside>
 <!--sidebar end-->
 
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+<!--div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div-->
 
 <!-- **********************************************************************************************************************************************************
 MAIN CONTENT

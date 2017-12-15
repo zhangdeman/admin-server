@@ -10,23 +10,23 @@
     <title>【张德满】博客-管理后台</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="{{URL::asset('assets/css/bootstrap.css')}}" rel="stylesheet">
     <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
-    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+    <link href="{{URL::asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets/css/zabuto_calendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets/js/gritter/css/jquery.gritter.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets/lineicons/style.css')}}">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link href="{{URL::asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/css/style-responsive.css')}}" rel="stylesheet">
 
-    <script src="assets/js/chart-master/Chart.js"></script>
+    <script src="{{URL::asset('assets/js/chart-master/Chart.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="{{URL::asset('assets/js/html5shiv.js')}}"></script>
+    <script src="{{URL::asset('assets/js/response.js')}}"></script>
     <![endif]-->
 </head>
 
@@ -129,7 +129,7 @@
                         </li>
                         <li>
                             <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="{{URL::asset('assets/img/ui-zac.jpg')}}"></span>
                                 <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
@@ -141,7 +141,7 @@
                         </li>
                         <li>
                             <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="{{URL::asset('assets/img/ui-divya.jpg')}}"></span>
                                 <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
@@ -153,7 +153,7 @@
                         </li>
                         <li>
                             <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="{{URL::asset('assets/img/ui-danro.jpg')}}"></span>
                                 <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
@@ -165,7 +165,7 @@
                         </li>
                         <li>
                             <a href="index.html#">
-                                <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="{{URL::asset('assets/img/ui-sherman.jpg')}}"></span>
                                 <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>

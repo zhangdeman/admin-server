@@ -62,3 +62,9 @@ Route::post('article/addArticle', function (Request $request) {
     $instance = new App\Http\Controllers\Article($request);
     $instance->addArticle($request);
 });
+
+//添加文章
+Route::get('permission/showAddPermission', function (Request $request) {
+    $instance = new App\Http\Controllers\Permission($request);
+   return $instance->showAddPermission($request);
+});

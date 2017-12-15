@@ -365,6 +365,5 @@
                 </div><!-- /col-lg-3 -->
             </div><! --/row -->
         </section>
-    </section>
 
 @include('common/footer');
