@@ -10,20 +10,22 @@
     <title>管理后台</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{URL::asset('html_asset/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/css/bootstrap.css')}}" rel="stylesheet">
     <!--external css-->
-    <link href="{{URL::asset('html_asset/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="{{URL::asset('html_asset/css/style.css')}}" rel="stylesheet">
-    <link href="{{URL::asset('html_asset/css/style-responsive.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/css/style-responsive.css')}}" rel="stylesheet">
+    <script src="{{URL::asset('assets/js/jquery.js')}}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="{{URL::asset('html_asset/js/html5shiv.js')}}"></script>
-    <script src="{{URL::asset('html_asset/js/response.js')}}"></script>
-    <script src="{{URL::asset('js/admin/login-admin.js')}}"></script>
+    <script src="{{URL::asset('assets/js/html5shiv.js')}}"></script>
+    <script src="{{URL::asset('assets/js/response.js')}}"></script>
     <![endif]-->
+    <script src="{{URL::asset('js/admin/login-admin.js')}}"></script>
+
 </head>
 
 <body>
@@ -51,11 +53,11 @@ MAIN CONTENT
                 <button class="btn btn-theme btn-block" id="admin-login" type="button"><i class="fa fa-lock"></i>登录</button>
                 <!--hr-->
 
-                <!--div class="login-social-link centered">
-                    <p>or you can sign in via your social network</p>
+                <div class="login-social-link centered hidden" id="show-op-result">
+                    <!--p></p>
                     <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                    <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-                </div-->
+                    <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button-->
+                </div>
                 <!--div class="registration">
                     Don't have an account yet?<br/>
                     <a class="" href="#">
@@ -93,12 +95,11 @@ MAIN CONTENT
 </div>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{{URL::asset('html_asset/js/jquery.js')}}"></script>
-<script src="{{URL::asset('html_asset/js/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
 
 <!--BACKSTRETCH-->
 <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="{{URL::asset('assets/js/jquery.backstretch.min.js')}}"></script>
 <script>
     $.backstretch("assets/img/login-bg.jpg", {speed: 500});
 </script>

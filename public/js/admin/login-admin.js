@@ -17,7 +17,7 @@ var dealLoginAdmin = {
      */
     _setLoginAdminErrorMsg : function(level, msg) {
         $("#show-op-result").removeClass('hidden');
-        $("#show-op-result").html("<div class=\"alert " + level + "\">\n" + msg + ".</div>");
+        $("#show-op-result").html("<p>" + msg + ".</p>");
     },
 
 
@@ -51,7 +51,6 @@ var dealLoginAdmin = {
                     }
                 },
                 error : function () {
-                    alert(111);
                     dealLoginAdmin._setLoginAdminErrorMsg("alert-danger", dealLoginAdmin.REQUEST_ERROR);
                 }
             });
@@ -59,6 +58,6 @@ var dealLoginAdmin = {
         });
     }
 
-}
+};
 
 dealLoginAdmin.submitClick();
