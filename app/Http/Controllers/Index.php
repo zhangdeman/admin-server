@@ -7,24 +7,21 @@
  */
 namespace App\Http\Controllers;
 
-use App\Library\AuthClient;
-use Illuminate\Foundation\Bus\DispatchesJobs;
+use App\Library\Permission;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Cookie;
 use Route;
 use Themis\Api\Out;
 
-class Index extends BaseController
+class Index extends Controller
 {
     public function __construct(Request $request)
     {
+        parent::__construct($request);
     }
 
     public function index(Request $request)
     {
-        return view('index/index');
+        $permission = Permission::getLeftNav();
+        return view('index/index')->with('permission_list', $permission)->with('admin_info', $this->adminInfo);
     }
 }

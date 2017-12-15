@@ -51,7 +51,6 @@ class Controller extends BaseController
             return true;
         }
 
-
         $token = self::$requestInstance->input('admin_token');
         $token = empty($token) ? $_COOKIE['deman_club_token'] : $token;
 

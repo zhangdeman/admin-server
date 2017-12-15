@@ -7,17 +7,31 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
 
-            <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-            <h5 class="centered">Marcel Newman</h5>
+            <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+            <h5 class="centered">{{$admin_info['nickname']}}</h5>
 
             <li class="mt">
                 <a class="active" href="index.html">
                     <i class="fa fa-dashboard"></i>
-                    <span>Dashboard</span>
+                    <span>管理首页</span>
                 </a>
             </li>
 
-            <li class="sub-menu">
+            @foreach($permission_list as $permission_item)
+                <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-desktop"></i>
+                    <span>{{$permission_item['title']}}</span>
+                </a>
+                <ul class="sub">
+                    @foreach($permission_item['son'] as $son_item)
+                        <li><a  href="{{$son_item['href']}}">{{$son_item['title']}}</a></li>
+                    @endforeach
+                </ul>
+                </li>
+            @endforeach
+
+            <!--li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-desktop"></i>
                     <span>UI Elements</span>
@@ -79,7 +93,7 @@
                     <li><a  href="morris.html">Morris</a></li>
                     <li><a  href="chartjs.html">Chartjs</a></li>
                 </ul>
-            </li>
+            </li-->
 
         </ul>
         <!-- sidebar menu end-->
