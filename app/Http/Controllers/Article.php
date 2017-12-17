@@ -99,6 +99,7 @@ class Article extends Controller
 
         $params = $request->all();
         $params['id'] = $idInfo['id'];
+        $params['create_admin_id'] = $this->adminInfo['id'];
         $addResult = ArticleLib::addArticleKind($params);
         if ($addResult) {
             var_dump(111);
