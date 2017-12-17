@@ -57,7 +57,7 @@ class Permission extends BaseLibrary
 
                     array(
                         'title' =>  '添加文章',
-                        'href'  =>  '#',
+                        'href'  =>  '/article/showAddArticle',
                     ),
                 ),
             ),

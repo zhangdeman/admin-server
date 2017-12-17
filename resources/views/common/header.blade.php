@@ -28,6 +28,9 @@
     <script src="{{URL::asset('assets/js/html5shiv.js')}}"></script>
     <script src="{{URL::asset('assets/js/response.js')}}"></script>
     <![endif]-->
+    <script src="{{URL::asset('js/common/cookie.js')}}"></script>
+    <script src="{{URL::asset('assets/js/jquery.js')}}"></script>
+    <script src="{{URL::asset('assets/js/jquery-1.8.3.min.js')}}"></script>
 </head>
 
 <body>
@@ -189,5 +192,6 @@
                 <li><a class="logout" href="login.html">Logout</a></li>
             </ul>
         </div>
+        <input type="hidden" id="csrf_token" value="{{csrf_token()}}">
     </header>
     <!--header end-->

@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
+use \App\Library\Permission;
 use Route;
 use Themis\Api\Out;
 
@@ -20,6 +21,9 @@ class Controller extends BaseController
 
     //管理员信息
     public $adminInfo = array();
+
+    //管理员权限
+    public $adminPermission = array();
 
     //不验证token接口 login
     public static $WHITE_INTERFACE = array(
@@ -61,6 +65,12 @@ class Controller extends BaseController
         }
 
         $this->adminInfo = $validateTokenResult;
+
+        view()->share('admin_info', $this->adminInfo);
+
+        $permission = $this->getPermission($this->adminInfo["id"]);
+
+        view()->share('permission_list', $permission);
     }
 
 
@@ -83,6 +93,18 @@ class Controller extends BaseController
 
         //完成请求提前返回，但可以继续后续逻辑
         fastcgi_finish_request();
+    }
+
+    /**
+     * @param $adminId
+     * @return array
+     * 获取当前管理员权限
+     */
+    public function getPermission($adminId)
+    {
+        $permission = Permission::getLeftNav(array());
+        $this->adminPermission = $permission;
+        return $permission;
     }
 
     /**

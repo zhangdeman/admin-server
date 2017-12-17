@@ -25,7 +25,6 @@ class Permission extends Controller
 
     public function showAddPermission(Request $request)
     {
-        $permission = \App\Library\Permission::getLeftNav();
-        return view('permission/addPermission')->with('permission_list',$permission)->with('admin_info', $this->adminInfo);
+        return view('permission/addPermission');
     }
 }
