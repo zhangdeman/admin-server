@@ -82,4 +82,15 @@ return [
         'options'           =>  array()
     ),
 
+    //添加文章类别
+    'add_article_kind' => array(
+        'uri'   =>  '/api/articleKind/add',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
 ];

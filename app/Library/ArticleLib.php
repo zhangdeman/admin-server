@@ -32,4 +32,14 @@ class ArticleLib extends BaseLibrary
     {
         return self::curl('add_article', $params);
     }
+
+    /**
+     * 添加文章类别
+     * @param $params
+     * @return bool
+     */
+    public static function addArticleKind($params)
+    {
+        return self::curl('add_article_kind', $params);
+    }
 }

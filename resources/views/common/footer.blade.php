@@ -36,7 +36,7 @@
             // (string | mandatory) the heading of the notification
             title: '欢迎登录管理后台!',
             // (string | mandatory) the text inside the notification
-            text: '博客不开放注册，有管理员添加。TEL : 177101580607',
+            text: '博客不开放注册，有管理员添加。TEL : 17710580607',
             // (string | optional) the image to display on the left
             image: '{{URL::asset('assets/img/ui-sam.jpg')}}',
             // (bool | optional) if you want it to fade out on its own or just sit there

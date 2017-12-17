@@ -67,4 +67,43 @@ class Article extends Controller
         }
         $this->success($addArticleResult);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showAddArticleKind(Request $request)
+    {
+        $articleList = ArticleLib::getArticleKind();
+        $showList = array(
+            array(
+                'id'    =>  0,
+                'title' =>  '根分类'
+            ),
+        );
+        foreach ($articleList as $item) {
+            $tmp = array(
+                'id'    =>  ''
+            );
+        }
+        return view('article/showAddArticleKind')->with('article_kind', $showList);
+    }
+
+    public function addArticleKind(Request $request)
+    {
+        $idInfo = IdWorker::getId();
+
+        if (empty($idInfo)) {
+            $this->error(IdWorker::getErrorCode(), IdWorker::getErrorMsg());
+        }
+
+        $params = $request->all();
+        $params['id'] = $idInfo['id'];
+        $addResult = ArticleLib::addArticleKind($params);
+        if ($addResult) {
+            var_dump(111);
+        } else {
+            var_dump(2222);
+        }
+    }
 }

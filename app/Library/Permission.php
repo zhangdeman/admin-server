@@ -59,6 +59,16 @@ class Permission extends BaseLibrary
                         'title' =>  '添加文章',
                         'href'  =>  '/article/showAddArticle',
                     ),
+
+                    array(
+                        'title' =>  '类型列表',
+                        'href'  =>  '/article/articleKindList',
+                    ),
+
+                    array(
+                        'title' =>  '添加类型',
+                        'href'  =>  '/article/showAddArticleKind',
+                    ),
                 ),
             ),
         );
