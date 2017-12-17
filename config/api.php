@@ -62,7 +62,7 @@ return [
 
     //获取文章类别
     'get_article_kind' => array(
-        'uri'   =>  '/api/article/getArticleKind',
+        'uri'   =>  '/api/articleKind/list',
         'method'=> 'get',
         'connect_time_out'  =>  20,
         'execute_time_out'  =>  30,
