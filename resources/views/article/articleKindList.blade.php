@@ -28,7 +28,7 @@
                         <td>{{$singleKind['create_time']}}</td>
                         <td>{{$singleKind['parent_id']}}</td>
                         <td>
-                            <button class="btn btn-success btn-xs" data-toggle="modal" href="#kindDetail">详情</button>
+                            <button class="btn btn-success btn-xs" name="kindDetail" data-toggle="modal" href="#kindDetail">详情</button>
                             <button class="btn btn-primary btn-xs" data-toggle="modal" href="#editKind">编辑</button>
                             <button class="btn btn-danger btn-xs"  data-toggle="modal" href="#deleteKind">删除</button>
                         </td>
@@ -42,7 +42,7 @@
 </section><! --/wrapper -->
 
 <!-- Modal -->
-<div aria-hidden="true" aria-labelledby="kindDetailLabel" role="dialog" tabindex="-1" id="kindDetail" class="modal fade">
+<div aria-hidden="true" aria-labelledby="kindDetailLabel" id="kindDetail" role="dialog" tabindex="-1" id="kindDetail" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -54,9 +54,34 @@
                 <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
 
             </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
             <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                <button class="btn btn-theme" type="button">Submit</button>
+                <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+                <!--button class="btn btn-theme" type="button">Submit</button-->
             </div>
         </div>
     </div>
@@ -64,7 +89,7 @@
 <!-- modal -->
 
 <!-- Modal -->
-<div aria-hidden="true" aria-labelledby="editKindLabel" role="dialog" tabindex="-1" id="editKind" class="modal fade">
+<div aria-hidden="true" aria-labelledby="editKindLabel" id="editKind" role="dialog" tabindex="-1" id="editKind" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -86,7 +111,7 @@
 <!-- modal -->
 
 <!-- Modal -->
-<div aria-hidden="true" aria-labelledby="deleteKindLabel" role="dialog" tabindex="-1" id="deleteKind" class="modal fade">
+<div aria-hidden="true" aria-labelledby="deleteKindLabel" id="deleteKind" role="dialog" tabindex="-1" id="deleteKind" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -106,4 +131,5 @@
     </div>
 </div>
 <!-- modal -->
+<script type="text/javascript" src="{{URL::asset('js/article/article-kind.js')}}"></script>
 @include('common/footer');
