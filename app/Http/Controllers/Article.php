@@ -125,10 +125,14 @@ class Article extends Controller
         }
     }
 
+    /**
+     * 获取文章类型列表
+     * @param Request $request
+     * @return
+     */
     public function getKindList(Request $request)
     {
         $kindList = ArticleLib::getArticleKind(array('page_size' => 1, 'current_page' => 1));
-        $kindList = empty($kindList) ? array() : $kindList;
-        $this->success($kindList);
+        return view('article/articleKindList')->with('list', $kindList);
     }
 }

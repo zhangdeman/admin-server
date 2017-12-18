@@ -81,3 +81,9 @@ Route::post('article/addArticleKind', function (Request $request) {
     return $instance->addArticleKind($request);
 });
 
+//文章类别列表
+Route::get('article/articleKindList', function (Request $request) {
+    $instance = new App\Http\Controllers\Article($request);
+    return $instance->getKindList($request);
+});
+
