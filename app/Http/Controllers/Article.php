@@ -28,16 +28,6 @@ class Article extends Controller
         return view('article/showAddArticle');
     }
 
-    /**
-     * 获取文章类型列表
-     * 请求失败返回空列表
-     */
-    public function getKindList(Request $request)
-    {
-        $kindList = ArticleLib::getArticleKind();
-        $kindList = empty($kindList) ? array() : $kindList;
-        $this->success($kindList);
-    }
 
     /**
      * 添加文章
@@ -89,6 +79,11 @@ class Article extends Controller
         return view('article/showAddArticleKind')->with('article_kind', $showList);
     }
 
+    /**
+     * 添加文章类别
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function addArticleKind(Request $request)
     {
         $idInfo = IdWorker::getId();
@@ -102,9 +97,16 @@ class Article extends Controller
         $params['create_admin_id'] = $this->adminInfo['id'];
         $addResult = ArticleLib::addArticleKind($params);
         if ($addResult) {
-            var_dump(111);
+            $this->getArticleKindList($request);
         } else {
-            var_dump(2222);
+            return view('article/showAddArticleKind')->with('error_msg', ArticleLib::getErrorMsg());
         }
+    }
+
+    public function getKindList(Request $request)
+    {
+        $kindList = ArticleLib::getArticleKind(array('page_size' => 1, 'current_page' => 1));
+        $kindList = empty($kindList) ? array() : $kindList;
+        $this->success($kindList);
     }
 }

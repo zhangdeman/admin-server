@@ -111,6 +111,17 @@ class BaseLibrary
             }
         }
 
+        var_dump($requestResult);
+
+        $logData = array(
+            'url'       =>  $requestUrl,
+            'config'    =>  $config,
+            'response_data'  =>  $requestResult,
+            'response_header' => $curlInstance->getInfo()
+        );
+
+        MyLog::info($logData);
+
         $httpCode = $curlInstance->getInfo(CURLINFO_HTTP_CODE);
 
         if (200 == $httpCode && $requestResult) {
