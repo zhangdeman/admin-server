@@ -132,7 +132,7 @@ class Article extends Controller
      */
     public function getKindList(Request $request)
     {
-        $kindList = ArticleLib::getArticleKind(array('page_size' => 1, 'current_page' => 1));
+        $kindList = ArticleLib::getArticleKind(array('page_size' => 20, 'current_page' => 1));
         return view('article/articleKindList')->with('list', $kindList);
     }
 }

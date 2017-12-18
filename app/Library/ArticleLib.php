@@ -21,6 +21,9 @@ class ArticleLib extends BaseLibrary
     public static function getArticleKind($params)
     {
         $kindList = self::curl('get_article_kind',$params);
+        foreach ($kindList['article_kind_list'] as &$item) {
+            $item['create_time'] = date('Y-m-d H:i:s', $item['create_time']);
+        }
         return $kindList;
     }
 

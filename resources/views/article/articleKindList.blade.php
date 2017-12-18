@@ -19,34 +19,91 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                    @foreach($list['article_kind_list'] as $singleKind)
                     <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{{$singleKind['id']}}</td>
+                        <td>{{$singleKind['title']}}</td>
+                        <td>{{$singleKind['status']}}</td>
+                        <td>{{$singleKind['create_time']}}</td>
+                        <td>{{$singleKind['parent_id']}}</td>
+                        <td>
+                            <button class="btn btn-success btn-xs" data-toggle="modal" href="#kindDetail">详情</button>
+                            <button class="btn btn-primary btn-xs" data-toggle="modal" href="#editKind">编辑</button>
+                            <button class="btn btn-danger btn-xs"  data-toggle="modal" href="#deleteKind">删除</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Simon</td>
-                        <td>Mosa</td>
-                        <td>@twitter</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div><! --/content-panel -->
         </div><!-- /col-md-12 -->
     </div><!-- row -->
 </section><! --/wrapper -->
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="kindDetailLabel" role="dialog" tabindex="-1" id="kindDetail" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">类别详情</h4>
+            </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                <button class="btn btn-theme" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="editKindLabel" role="dialog" tabindex="-1" id="editKind" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">编辑详情</h4>
+            </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                <button class="btn btn-theme" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="deleteKindLabel" role="dialog" tabindex="-1" id="deleteKind" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">删除类别</h4>
+            </div>
+            <div class="modal-body">
+                <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                <button class="btn btn-theme" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
 @include('common/footer');
