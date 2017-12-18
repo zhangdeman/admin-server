@@ -87,3 +87,9 @@ Route::get('article/articleKindList', function (Request $request) {
     return $instance->getKindList($request);
 });
 
+//文章类别列表
+Route::get('article/articleKindDetail', function (Request $request) {
+    $instance = new App\Http\Controllers\Article($request);
+    return $instance->getKindDetail($request);
+});
+

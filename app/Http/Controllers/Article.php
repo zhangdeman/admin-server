@@ -135,4 +135,15 @@ class Article extends Controller
         $kindList = ArticleLib::getArticleKind(array('page_size' => 20, 'current_page' => 1));
         return view('article/articleKindList')->with('list', $kindList);
     }
+
+    /**
+     * 获取类别详情接口
+     * @param Request $request
+     */
+    public function getKindDetail(Request $request)
+    {
+        $id = $request->input('id');
+        $detail = ArticleLib::getArticleKindDetail(array('id' => $id));
+        $this->success($detail);
+    }
 }

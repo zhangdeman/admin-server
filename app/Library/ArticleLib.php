@@ -46,4 +46,20 @@ class ArticleLib extends BaseLibrary
     {
         return self::curl('add_article_kind', $params);
     }
+
+    /**
+     * 添加文章类别
+     * @param $params
+     * @return bool
+     */
+    public static function getArticleKindDetail($params)
+    {
+        $detail = self::curl('article_kind_detail', $params);
+        if (empty($detail)) {
+            return $detail;
+        }
+
+        $detail['create_time'] = date('Y-m-d H:i:s', $detail['create_time']);
+        return $detail;
+    }
 }

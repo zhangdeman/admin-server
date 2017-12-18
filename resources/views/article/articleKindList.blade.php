@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12 mt">
             <div class="content-panel">
-                <table class="table table-hover">
+                <table class="table table-hover" id="article-list">
                     <h4><i class="fa fa-angle-right"></i>列表</h4>
                     <hr>
                     <thead>
@@ -43,48 +43,7 @@
 
 <!-- Modal -->
 <div aria-hidden="true" aria-labelledby="kindDetailLabel" id="kindDetail" role="dialog" tabindex="-1" id="kindDetail" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">类别详情</h4>
-            </div>
-            <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
 
-            </div>
-            <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-
-            </div>
-            <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-
-            </div>
-            <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-
-            </div>
-            <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-
-            </div>
-            <div class="modal-body">
-                <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-
-            </div>
-            <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
-                <!--button class="btn btn-theme" type="button">Submit</button-->
-            </div>
-        </div>
-    </div>
 </div>
 <!-- modal -->
 
