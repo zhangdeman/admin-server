@@ -111,8 +111,6 @@ class BaseLibrary
             }
         }
 
-        var_dump($requestResult);
-
         $logData = array(
             'url'       =>  $requestUrl,
             'config'    =>  $config,

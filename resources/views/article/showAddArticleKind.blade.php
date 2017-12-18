@@ -20,8 +20,12 @@
                                 <label class="col-sm-2 col-sm-2 control-label">父分类</label>
                                 <div class="col-sm-10">
                                     <select name="parent_id" class="form-control col-sm-10">
-                                        @foreach($article_kind as $item)
+                                        <option value="{{$article_kind['id']}}">{{$article_kind['title']}}</option>
+                                        @foreach($article_kind['module'] as $item)
                                             <option value="{{$item['id']}}">{{$item['title']}}</option>
+                                            @foreach($item['type'] as $single)
+                                                <option value="{{$single['id']}}">{{$single['title']}}</option>
+                                            @endforeach
                                         @endforeach
                                     </select>
                                 </div>

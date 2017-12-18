@@ -7,6 +7,7 @@
  */
 namespace App\Http\Controllers;
 
+use App\Library\ArrayTool;
 use App\Library\IdWorker;
 use Illuminate\Http\Request;
 use App\Library\ArticleLib;
@@ -64,18 +65,38 @@ class Article extends Controller
      */
     public function showAddArticleKind(Request $request)
     {
-        $articleList = ArticleLib::getArticleKind();
+        $articleList = ArticleLib::getArticleKind(array());
+        $articleList = $articleList['article_kind_list'];
+        foreach ($articleList as &$item) {
+            $item = ArrayTool::dataFilter($item, array('id', 'title', 'parent_id'));
+        }
+        $articleList = ArrayTool::group($articleList, 'parent_id');
         $showList = array(
-            array(
-                'id'    =>  0,
-                'title' =>  '根分类'
+            'id'    =>  0,
+            'title' =>  '根分类',
+            'module'    =>  array(
+
             ),
         );
-        foreach ($articleList as $item) {
-            $tmp = array(
-                'id'    =>  ''
-            );
+        foreach ($articleList[0] as $parentId => $item) {
+            if (empty($articleList[$item['id']])) {
+                $tmp = array(
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'type'  => array(),
+                );
+            } else {
+                $tmp = array(
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'type' => $articleList[$item['id']]
+                );
+            }
+
+            $showList['module'][] = $tmp;
+
         }
+
         return view('article/showAddArticleKind')->with('article_kind', $showList);
     }
 
@@ -97,9 +118,10 @@ class Article extends Controller
         $params['create_admin_id'] = $this->adminInfo['id'];
         $addResult = ArticleLib::addArticleKind($params);
         if ($addResult) {
-            $this->getArticleKindList($request);
+            return $this->getKindList($request);
         } else {
-            return view('article/showAddArticleKind')->with('error_msg', ArticleLib::getErrorMsg());
+            view()->share('error_msg', ArticleLib::getErrorMsg());
+            return $this->showAddArticleKind($request);
         }
     }
 

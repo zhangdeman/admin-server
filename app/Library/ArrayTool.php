@@ -16,7 +16,7 @@ class ArrayTool
      * @param null  $defaultValue 保留字段不存在时的默认值
      * @return array
      */
-    public function group(array $dataSource, $groupField, $leaveFieldList = array(), $defaultValue = null)
+    public static function group(array $dataSource, $groupField, $leaveFieldList = array(), $defaultValue = null)
     {
         $groupArray = array();
         foreach ($dataSource as $key => $value) {
@@ -33,7 +33,7 @@ class ArrayTool
                 $groupArray[$groupFieldValue] = array($value);
             }
         }
-        return $dataSource;
+        return $groupArray;
     }
 
     /**
