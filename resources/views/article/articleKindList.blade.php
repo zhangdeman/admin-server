@@ -28,9 +28,9 @@
                         <td>{{$singleKind['create_time']}}</td>
                         <td>{{$singleKind['parent_id']}}</td>
                         <td>
-                            <button class="btn btn-success btn-xs" name="kindDetail" data-toggle="modal" href="#kindDetail">详情</button>
-                            <button class="btn btn-primary btn-xs" data-toggle="modal" href="#editKind">编辑</button>
-                            <button class="btn btn-danger btn-xs"  data-toggle="modal" href="#deleteKind">删除</button>
+                            <button class="btn btn-success btn-xs" name="kindDetail" data-toggle="modal" onclick="kindOnclickEvent({{$singleKind['id']}}, 'detail');" href="#kindDetail">详情</button>
+                            <button class="btn btn-primary btn-xs" data-toggle="modal" onclick="kindOnclickEvent({{$singleKind['id']}}, 'edit');" href="#editKind">编辑</button>
+                            <button class="btn btn-danger btn-xs"  data-toggle="modal" onclick="kindOnclickEvent({{$singleKind['id']}}, 'delete');" href="#deleteKind">删除</button>
                         </td>
                     </tr>
                     @endforeach

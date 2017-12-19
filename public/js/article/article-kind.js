@@ -1,38 +1,27 @@
 var articleKind = {
 
-    init : function () {
+    init : function (kindId, type) {
 
-
-        $("#article-list tr").click(function () {
-
-            //var thisInfo = $("table tbody");
-            //var hang = thisInfo.parent("tr").prevAll(); //prevAll()表示这个tr前面有多少个tr
-            //var lie = thisInfo.prevAll().length + 1;
-            //console.log(hang);
-            var html = $(this).html();
-            alert(html.replace(/[^0-9]/ig, ""));
-            var pattern = /[^0-9]$/;
-
-            var match = pattern.exec(html);
-            //alert(match);
-
-            //期望弹出的模态框
-            var model = $("table tbody tr td button").attr("href");
-
-            //类型的ID
-            var kindId = $("table tbody tr:nth-child(2) td:nth-child(1)").html();
-
-            if ("#kindDetail" == model) {
-                articleKind.kindDetail(model, kindId);
-            } else if("#editKind" == model) {
-                articleKind.editKind(model, kindId);
-            } else if ("#deleteKind" == model) {
-                articleKind.deleteKind(model, kindId);
-            }
-
-            lie = 0;
-        });
-
+        var model = "";
+        switch (type) {
+            case "detail" :
+                model = "#kindDetail";
+                break;
+            case "edit":
+                model = "#editKind";
+                break;
+            case "delete":
+                model = "#deleteKind";
+                break;
+            default:
+        }
+        if ("#kindDetail" == model) {
+            articleKind.kindDetail(model, kindId);
+        } else if("#editKind" == model) {
+            articleKind.editKind(model, kindId);
+        } else if ("#deleteKind" == model) {
+            articleKind.deleteKind(model, kindId);
+        }
 
     },
 
@@ -112,4 +101,6 @@ var articleKind = {
     }
 };
 
-articleKind.init();
+function kindOnclickEvent(kindId, type) {
+    articleKind.init(kindId, type);
+}

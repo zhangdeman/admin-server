@@ -11,7 +11,7 @@
             <h5 class="centered">{{$admin_info['nickname']}}</h5>
 
             <li class="mt">
-                <a class="active" href="index.html">
+                <a class="active" href="/index">
                     <i class="fa fa-dashboard"></i>
                     <span>管理首页</span>
                 </a>
