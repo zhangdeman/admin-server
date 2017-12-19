@@ -2,12 +2,19 @@ var articleKind = {
 
     init : function () {
 
-        $("table tbody tr td button").click(function () {
 
-            var thisInfo = $($("table tbody"));
-            var hang = thisInfo.parent("tr").prevAll(); //prevAll()表示这个tr前面有多少个tr
-            var lie = thisInfo.prevAll().length + 1;
-            alert(lie);
+        $("#article-list tr").click(function () {
+
+            //var thisInfo = $("table tbody");
+            //var hang = thisInfo.parent("tr").prevAll(); //prevAll()表示这个tr前面有多少个tr
+            //var lie = thisInfo.prevAll().length + 1;
+            //console.log(hang);
+            var html = $(this).html();
+            alert(html.replace(/[^0-9]/ig, ""));
+            var pattern = /[^0-9]$/;
+
+            var match = pattern.exec(html);
+            //alert(match);
 
             //期望弹出的模态框
             var model = $("table tbody tr td button").attr("href");
@@ -42,6 +49,10 @@ var articleKind = {
                 var detail = data.data;
                 if (code == 0) {
                     var htmlContent = "<div class=\"modal-dialog\">\n" +
+                        "<div class=\"modal-header\">\n" +
+                        "                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n" +
+                        "                <h4 class=\"modal-title\">类别详情</h4>\n" +
+                        "            </div>" +
                         "        <div class=\"modal-content\">\n" +
                         "            <table class=\"table table-hover\">\n" +
                         "                <thead>\n" +
