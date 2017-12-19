@@ -25,6 +25,7 @@ var articleKind = {
 
     },
 
+    //类别详情
     kindDetail : function (model, kindId) {
         $.ajax({
             type: 'GET',
@@ -93,7 +94,54 @@ var articleKind = {
     },
 
     editKind : function (model, kindId) {
-        alert(model)
+        $.ajax({
+            type: 'GET',
+            url: '/article/articleKindDetail',
+            data: {
+                'id'  : kindId
+            },
+            dataType: "json",
+            success: function (data) {
+                var code = data.error_code;
+                var detail = data.data;
+                if (code == 0) {
+                    var htmlContent = "<div class=\"modal-dialog\">\n" +
+                        "<h4 class=\"mb\"><i class=\"fa fa-angle-right\"></i>类别</h4>\n" +
+                        "                        <form class=\"form-horizontal style-form\" method=\"post\" action=\"/article/addArticleKind\">\n" +
+                        "                            <div class=\"form-group\">\n" +
+                        "                                <label class=\"col-sm-2 col-sm-2 control-label\">标题</label>\n" +
+                        "                                <div class=\"col-sm-10\">\n" +
+                        "                                    <input type=\"text\" name=\"title\" class=\"form-control\">\n" +
+                        "                                </div>\n" +
+                        "                            </div>\n" +
+                        "\n" +
+                        "                            <div class=\"form-group\">\n" +
+                        "                                <label class=\"col-sm-2 col-sm-2 control-label\">父分类</label>\n" +
+                        "                                <div class=\"col-sm-10\">\n" +
+                        "                                    <select name=\"parent_id\" class=\"form-control col-sm-10\">\n" +
+                        "                                        <option value=\"{{$article_kind['id']}}\">{{$article_kind['title']}}</option>\n" +
+                        "                                        @foreach($article_kind['module'] as $item)\n" +
+                        "                                            <option value=\"{{$item['id']}}\">{{$item['title']}}</option>\n" +
+                        "                                            @foreach($item['type'] as $single)\n" +
+                        "                                                <option value=\"{{$single['id']}}\">{{$single['title']}}</option>\n" +
+                        "                                            @endforeach\n" +
+                        "                                        @endforeach\n" +
+                        "                                    </select>\n" +
+                        "                                </div>\n" +
+                        "                            </div>\n" +
+                        "                            <input type=\"hidden\" name=\"_token\" value=\"{{csrf_token()}}\">\n" +
+                        "                            <button type=\"submit\" class=\"btn btn-theme\">发布</button>\n" +
+                        "                        </form>"+
+                        "    </div>";
+                    $(model).html(htmlContent);
+                } else {
+
+                }
+            },
+            error : function () {
+                dealLoginAdmin._setLoginAdminErrorMsg("alert-danger", dealLoginAdmin.REQUEST_ERROR);
+            }
+        });
     },
 
     deleteKind : function (model, kindId) {
