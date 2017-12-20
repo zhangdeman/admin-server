@@ -93,6 +93,7 @@ var articleKind = {
         });
     },
 
+    //编辑类型
     editKind : function (model, kindId) {
         $.ajax({
             type: 'GET',
@@ -105,41 +106,76 @@ var articleKind = {
                 var code = data.error_code;
                 var detail = data.data;
                 if (code == 0) {
+                    var kindList = detail.kind_list;
+                    var selectHtml =  "<select name=\"parent_id\" class=\"form-control col-sm-10\">\n";
+                    if (kindList['id'] == detail['parent_id']) {
+                        selectHtml += "<option selected='selected' value=\""+kindList["id"]+"\">"+kindList['title']+"</option>\n";
+                    } else {
+                        selectHtml += "<option value=\""+kindList["id"]+"\">"+kindList['title']+"</option>\n";
+                    }
+
+                    var module = kindList.module;
+                    var moduleLen = module.length;
+                    for (index = 0; index < moduleLen; index++) {
+                        selectHtml += "";
+                        var type = module[index]['type'];
+                        var typeLen = type.length;
+                        if (module[index]['id'] == detail['parent_id']) {
+                            selectHtml += "<option selected='selected' value=\""+module[index]["id"]+"\">|--"+module[index]['title']+"</option>\n";
+                        } else {
+                            selectHtml += "<option value=\""+module[index]["id"]+"\">|--"+module[index]['title']+"</option>\n";
+                        }
+
+                        for (typeIndex = 0; typeIndex < typeLen; typeIndex++) {
+                            if (type[typeIndex]['id'] == detail['parent_id']) {
+                                selectHtml += "<option selected='selected' value=\""+type[typeIndex]["id"]+"\">|--|--"+type[typeIndex]['title']+"</option>\n";
+                            } else {
+                                selectHtml += "<option value=\""+type[typeIndex]["id"]+"\">|--|--"+type[typeIndex]['title']+"</option>\n";
+                            }
+                        }
+                    }
+
+                    selectHtml += "</select>";
                     var htmlContent = "<div class=\"modal-dialog\">\n" +
-                        "<h4 class=\"mb\"><i class=\"fa fa-angle-right\"></i>类别</h4>\n" +
+                        "<div class=\"modal-header\">\n" +
+                        "                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n" +
+                        "                <h4 class=\"modal-title\">更新类别</h4>\n" +
+                        "            </div>" +
+                        "        <div class=\"modal-content\">\n" +
+                        "            <!-- BASIC FORM ELELEMNTS -->\n" +
+                        "            <div class=\"row mt\">\n" +
+                        "                <div class=\"col-lg-12\">\n" +
+                        "                    <div class=\"form-panel\">\n" +
                         "                        <form class=\"form-horizontal style-form\" method=\"post\" action=\"/article/addArticleKind\">\n" +
                         "                            <div class=\"form-group\">\n" +
                         "                                <label class=\"col-sm-2 col-sm-2 control-label\">标题</label>\n" +
                         "                                <div class=\"col-sm-10\">\n" +
-                        "                                    <input type=\"text\" name=\"title\" class=\"form-control\">\n" +
+                        "                                    <input type=\"text\" name=\"title\" class=\"form-control\" value=\""+detail.title+"\">\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +
                         "\n" +
                         "                            <div class=\"form-group\">\n" +
                         "                                <label class=\"col-sm-2 col-sm-2 control-label\">父分类</label>\n" +
                         "                                <div class=\"col-sm-10\">\n" +
-                        "                                    <select name=\"parent_id\" class=\"form-control col-sm-10\">\n" +
-                        "                                        <option value=\"{{$article_kind['id']}}\">{{$article_kind['title']}}</option>\n" +
-                        "                                        @foreach($article_kind['module'] as $item)\n" +
-                        "                                            <option value=\"{{$item['id']}}\">{{$item['title']}}</option>\n" +
-                        "                                            @foreach($item['type'] as $single)\n" +
-                        "                                                <option value=\"{{$single['id']}}\">{{$single['title']}}</option>\n" +
-                        "                                            @endforeach\n" +
-                        "                                        @endforeach\n" +
-                        "                                    </select>\n" +
+                        selectHtml +
                         "                                </div>\n" +
                         "                            </div>\n" +
                         "                            <input type=\"hidden\" name=\"_token\" value=\"{{csrf_token()}}\">\n" +
-                        "                            <button type=\"submit\" class=\"btn btn-theme\">发布</button>\n" +
-                        "                        </form>"+
-                        "    </div>";
+                        "                            <button type=\"submit\" class=\"btn btn-theme\">更新</button>\n" +
+                        "                        </form>\n" +
+                        "                    </div>\n" +
+                        "                </div><!-- col-lg-12-->\n" +
+                        "            </div><!-- /row -->\n" +
+                        "\n" +
+                        "\n" +
+                        "</div></div>";
                     $(model).html(htmlContent);
                 } else {
 
                 }
             },
             error : function () {
-                dealLoginAdmin._setLoginAdminErrorMsg("alert-danger", dealLoginAdmin.REQUEST_ERROR);
+
             }
         });
     },

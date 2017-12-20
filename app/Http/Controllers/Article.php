@@ -144,6 +144,38 @@ class Article extends Controller
     {
         $id = $request->input('id');
         $detail = ArticleLib::getArticleKindDetail(array('id' => $id));
+        $articleList = ArticleLib::getArticleKind(array());
+        $articleList = $articleList['article_kind_list'];
+        foreach ($articleList as &$item) {
+            $item = ArrayTool::dataFilter($item, array('id', 'title', 'parent_id'));
+        }
+        $articleList = ArrayTool::group($articleList, 'parent_id');
+        $showList = array(
+            'id'    =>  0,
+            'title' =>  '根分类',
+            'module'    =>  array(
+
+            ),
+        );
+        foreach ($articleList[0] as $parentId => $item) {
+            if (empty($articleList[$item['id']])) {
+                $tmp = array(
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'type'  => array(),
+                );
+            } else {
+                $tmp = array(
+                    'id' => $item['id'],
+                    'title' => $item['title'],
+                    'type' => $articleList[$item['id']]
+                );
+            }
+
+            $showList['module'][] = $tmp;
+
+        }
+        $detail['kind_list'] = $showList;
         $this->success($detail);
     }
 }

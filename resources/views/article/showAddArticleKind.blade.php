@@ -22,9 +22,9 @@
                                     <select name="parent_id" class="form-control col-sm-10">
                                         <option value="{{$article_kind['id']}}">{{$article_kind['title']}}</option>
                                         @foreach($article_kind['module'] as $item)
-                                            <option value="{{$item['id']}}">{{$item['title']}}</option>
+                                            <option value="{{$item['id']}}">|--{{$item['title']}}</option>
                                             @foreach($item['type'] as $single)
-                                                <option value="{{$single['id']}}">{{$single['title']}}</option>
+                                                <option value="{{$single['id']}}">|--|--{{$single['title']}}</option>
                                             @endforeach
                                         @endforeach
                                     </select>
