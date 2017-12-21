@@ -93,3 +93,9 @@ Route::get('article/articleKindDetail', function (Request $request) {
     return $instance->getKindDetail($request);
 });
 
+//更新文章类别
+Route::post('article/updateArticleKind', function (Request $request) {
+    $instance = new App\Http\Controllers\Article($request);
+    return $instance->updateKind($request);
+});
+

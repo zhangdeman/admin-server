@@ -62,4 +62,27 @@ class ArticleLib extends BaseLibrary
         $detail['create_time'] = date('Y-m-d H:i:s', $detail['create_time']);
         return $detail;
     }
+
+    /**
+     * 更新文章类别
+     * @param $params
+     * @return bool
+     */
+    public static function updateArticleKind($params)
+    {
+        $result = self::curl('article_kind_update', $params);
+        return $result;
+    }
+
+    /**
+     * 删除文章类别
+     * @param $params
+     * @return bool
+     */
+    public static function deleteArticleKind($params)
+    {
+        $result = self::curl('article_kind_delete', $params);
+        return $result;
+    }
+
 }

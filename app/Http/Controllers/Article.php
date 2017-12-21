@@ -176,6 +176,26 @@ class Article extends Controller
 
         }
         $detail['kind_list'] = $showList;
+        $detail['csrf_token'] = csrf_token();
         $this->success($detail);
+    }
+
+    public function updateKind(Request $request)
+    {
+        $id = $request->input('id');
+        $title = $request->input('title');
+        $parentId = $request->input('parent_id');
+        $params = array(
+            'id'    =>  $id,
+            'title' =>  $title,
+            'parent_id' =>  $parentId,
+        );
+        $result = ArticleLib::updateArticleKind($params);
+        return $this->getKindList($request);
+    }
+
+    public function deleteKind(Request $request)
+    {
+        $id = $request->input('id');
     }
 }

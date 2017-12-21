@@ -146,7 +146,7 @@ var articleKind = {
                         "            <div class=\"row mt\">\n" +
                         "                <div class=\"col-lg-12\">\n" +
                         "                    <div class=\"form-panel\">\n" +
-                        "                        <form class=\"form-horizontal style-form\" method=\"post\" action=\"/article/addArticleKind\">\n" +
+                        "                        <form class=\"form-horizontal style-form\" method=\"post\" action=\"/article/updateArticleKind\">\n" +
                         "                            <div class=\"form-group\">\n" +
                         "                                <label class=\"col-sm-2 col-sm-2 control-label\">标题</label>\n" +
                         "                                <div class=\"col-sm-10\">\n" +
@@ -160,7 +160,8 @@ var articleKind = {
                         selectHtml +
                         "                                </div>\n" +
                         "                            </div>\n" +
-                        "                            <input type=\"hidden\" name=\"_token\" value=\"{{csrf_token()}}\">\n" +
+                        "                            <input type=\"hidden\" name=\"_token\" value=\""+detail.csrf_token+"\">" +
+                        "<input type=\"hidden\" name=\"id\" value=\""+detail.id+"\">" +
                         "                            <button type=\"submit\" class=\"btn btn-theme\">更新</button>\n" +
                         "                        </form>\n" +
                         "                    </div>\n" +

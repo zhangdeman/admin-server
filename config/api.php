@@ -104,4 +104,27 @@ return [
         'options'           =>  array()
     ),
 
+    //更新文章类别
+    'article_kind_update' => array(
+        'uri'   =>  '/api/articleKind/update',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+
+    //删除文章类别
+    'article_kind_delete' => array(
+        'uri'   =>  '/api/articleKind/delete',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
 ];
