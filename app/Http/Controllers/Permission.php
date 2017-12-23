@@ -27,7 +27,8 @@ class Permission extends Controller
         );
 
         $permissionList = PermissionLib::getPermissionList($getParentPermissionWhere);
-        var_dump($permissionList);
+
+        return view('permission/permissionList')->with('permission', $permissionList);
     }
 
     public function doAddPermission(Request $request)

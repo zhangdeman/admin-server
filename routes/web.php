@@ -75,6 +75,12 @@ Route::post('permission/add', function (Request $request) {
     return $instance->doAddPermission($request);
 });
 
+//权限列表
+Route::get('permission/list', function (Request $request) {
+    $instance = new App\Http\Controllers\Permission($request);
+    return $instance->permissionList($request);
+});
+
 //显示文章类别列表
 Route::get('article/showAddArticleKind', function (Request $request) {
     $instance = new App\Http\Controllers\Article($request);

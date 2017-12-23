@@ -83,6 +83,15 @@ class PermissionLib extends BaseLibrary
     public static function getPermissionList($params)
     {
         $list = self::curl('get_permission_list', $params);
+        if (empty($list)) {
+            return array();
+        }
+
+        foreach ($list['list'] as &$item) {
+            $item['create_time'] = date('Y-m-d H:i:s', $item['create_time']);
+            $item['update_time'] = date('Y-m-d H:i:s', $item['update_time']);
+        }
+
         return $list;
     }
 
