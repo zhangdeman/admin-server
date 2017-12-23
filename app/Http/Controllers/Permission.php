@@ -21,7 +21,13 @@ class Permission extends Controller
 
     public function permissionList(Request $request)
     {
+        $getParentPermissionWhere = array(
+            'current_page'  =>  1,
+            'page_limit'    =>  20,
+        );
 
+        $permissionList = PermissionLib::getPermissionList($getParentPermissionWhere);
+        var_dump($permissionList);
     }
 
     public function doAddPermission(Request $request)
@@ -31,9 +37,17 @@ class Permission extends Controller
 
         }
         $requestParams = array(
-
+            'id'    =>  $idInfo['id'],
+            'create_admin_id'   =>  $this->adminInfo['id'],
+            'parent_id' =>  trim($request->input('parent_id')),
+            'name'  =>  trim($request->input('name')),
+            'desc'  =>  trim($request->input('desc')),
+            'real_controller'   =>  strtolower(trim($request->input('real_controller'))),
+            'real_action'       =>  strtolower(trim($request->input('real_action'))),
+            'request_uri'       =>  strtolower(trim($request->input('request_uri')))
         );
-        var_dump($request->all());
+        $result = PermissionLib::addPermission($requestParams);
+        return $this->permissionList($request);
     }
 
 

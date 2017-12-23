@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">访问的uri</label>
                         <div class="col-sm-10">
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="request_uri" class="form-control">
                         </div>
                     </div>
 

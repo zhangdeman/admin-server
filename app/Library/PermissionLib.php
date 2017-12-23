@@ -85,4 +85,15 @@ class PermissionLib extends BaseLibrary
         $list = self::curl('get_permission_list', $params);
         return $list;
     }
+
+    /**
+     * 添加权限
+     * @param $params
+     * @return bool
+     */
+    public static function addPermission($params)
+    {
+        $result = self::curl('add_permission', $params);
+        return $result;
+    }
 }
