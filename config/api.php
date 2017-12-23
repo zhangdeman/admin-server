@@ -127,4 +127,15 @@ return [
         'options'           =>  array()
     ),
 
+    //获取权限列表
+    'get_permission_list' => array(
+        'uri'   =>  '/api/permission/getList',
+        'method'=> 'get',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
 ];

@@ -5,9 +5,9 @@
 <footer class="site-footer">
     <div class="text-center">
         2017 - 【张德满】 - 博客 <a href="http://www.deman.club/" target="_blank" title="【张德满】博客">【张德满】博客</a>
-        <a href="index.html#" class="go-top">
+        <!--a href="index.html#" class="go-top">
             <i class="fa fa-angle-up"></i>
-        </a>
+        </a-->
     </div>
 </footer>
 <!--footer end-->

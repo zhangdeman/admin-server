@@ -63,10 +63,16 @@ Route::post('article/addArticle', function (Request $request) {
     $instance->addArticle($request);
 });
 
-//添加文章
+//显示添加权限
 Route::get('permission/showAddPermission', function (Request $request) {
     $instance = new App\Http\Controllers\Permission($request);
-   return $instance->showAddPermission($request);
+    return $instance->showAddPermission($request);
+});
+
+//执行添加权限
+Route::post('permission/add', function (Request $request) {
+    $instance = new App\Http\Controllers\Permission($request);
+    return $instance->doAddPermission($request);
 });
 
 //显示文章类别列表

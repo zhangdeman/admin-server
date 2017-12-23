@@ -6,7 +6,7 @@
  * Time: 22:31
  */
 namespace App\Library;
-class Permission extends BaseLibrary
+class PermissionLib extends BaseLibrary
 {
     public function __construct()
     {
@@ -73,5 +73,16 @@ class Permission extends BaseLibrary
             ),
         );
         return $nav;
+    }
+
+    /**
+     * 获取权限列表
+     * @param $params
+     * @return bool
+     */
+    public static function getPermissionList($params)
+    {
+        $list = self::curl('get_permission_list', $params);
+        return $list;
     }
 }

@@ -7,7 +7,7 @@
  */
 namespace App\Http\Controllers;
 
-use App\Library\Permission;
+use App\Library\PermissionLib;
 use Illuminate\Http\Request;
 use Route;
 use Themis\Api\Out;
@@ -21,7 +21,7 @@ class Index extends Controller
 
     public function index(Request $request)
     {
-        $permission = Permission::getLeftNav();
+        $permission = PermissionLib::getLeftNav();
         return view('index/index')->with('permission_list', $permission)->with('admin_info', $this->adminInfo);
     }
 }

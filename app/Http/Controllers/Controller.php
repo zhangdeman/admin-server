@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
-use \App\Library\Permission;
+use \App\Library\PermissionLib;
 use Route;
 use Themis\Api\Out;
 
@@ -113,7 +113,7 @@ class Controller extends BaseController
      */
     public function getPermission($adminId)
     {
-        $permission = Permission::getLeftNav(array());
+        $permission = PermissionLib::getLeftNav(array());
         $this->adminPermission = $permission;
         return $permission;
     }
