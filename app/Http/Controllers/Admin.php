@@ -67,4 +67,9 @@ class Admin extends Controller
         $roleList = config('role.list');
         return view('admin/roleList')->with('adminRole', $roleList);
     }
+
+    public function showAuthPermission(Request $request)
+    {
+        return view('admin/showAuthPermission');
+    }
 }

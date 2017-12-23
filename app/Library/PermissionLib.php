@@ -34,6 +34,11 @@ class PermissionLib extends BaseLibrary
                         'title' =>  '角色列表',
                         'href'  =>  '/admin/adminRoleList',
                     ),
+
+                    array(
+                        'title' =>  '角色授权',
+                        'href'  =>  '/permission/showAuthAdminPermission',
+                    ),
                 ),
             ),
             array(
