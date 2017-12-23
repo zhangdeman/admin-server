@@ -29,6 +29,11 @@ class PermissionLib extends BaseLibrary
                         'title' =>  '添加用户',
                         'href'  =>  '#',
                     ),
+
+                    array(
+                        'title' =>  '角色列表',
+                        'href'  =>  '/admin/adminRoleList',
+                    ),
                 ),
             ),
             array(

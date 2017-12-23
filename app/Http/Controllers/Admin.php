@@ -13,9 +13,9 @@ use Themis\Api\Out;
 
 class Admin extends Controller
 {
-    public function __construct()
+    public function __construct(Request $request)
     {
-
+        parent::__construct($request);
     }
 
     /**
@@ -60,5 +60,11 @@ class Admin extends Controller
 
         echo json_encode(array('error_code' => OpAdmin::getErrorCode(),'id' => $adminId['id'], 'error_msg' => OpAdmin::getErrorMsg()));
 
+    }
+
+    public function adminRoleList(Request $request)
+    {
+        $roleList = config('role.list');
+        return view('admin/roleList')->with('adminRole', $roleList);
     }
 }

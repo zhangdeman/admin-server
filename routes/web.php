@@ -45,6 +45,12 @@ Route::post('doAddAdmin', function (Request $request) {
     $instance->doAddAdmin($request);
 });
 
+//显示管理员角色列表
+Route::get('admin/adminRoleList', function (Request $request) {
+    $instance = new App\Http\Controllers\Admin($request);
+    return $instance->adminRoleList($request);
+});
+
 //获取文章类型列表
 Route::get('article/getArticleKind', function (Request $request) {
     $instance = new App\Http\Controllers\Article($request);
