@@ -30,11 +30,22 @@ class Controller extends BaseController
         'App\\Http\\Controllers\\Login'
     );
 
+    //不验证token的uri
+    public static $WHITE_URI = array(
+        'login',
+        'dologin',
+    );
+
+    //当前uri
+    public static $CURRENT_URI = '';
+
     //当前控制器
     public static $CURRENT_CLASS = '';
 
     public function __construct(Request $request)
     {
+        self::$CURRENT_URI = strtolower($request->path());
+
         self::$requestInstance = $request;
 
         if (empty(self::$CURRENT_CLASS)) {
@@ -50,7 +61,7 @@ class Controller extends BaseController
      */
     public function validateToken()
     {
-        if (in_array(self::$CURRENT_CLASS, self::$WHITE_INTERFACE)) {
+        if (in_array(self::$CURRENT_CLASS, self::$WHITE_INTERFACE) || in_array(self::$CURRENT_URI, self::$WHITE_URI)) {
             //不验证token
             return true;
         }
