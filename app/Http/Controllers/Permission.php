@@ -37,6 +37,7 @@ class Permission extends Controller
         if (empty($idInfo)) {
 
         }
+
         $requestParams = array(
             'id'    =>  $idInfo['id'],
             'create_admin_id'   =>  $this->adminInfo['id'],
@@ -45,10 +46,30 @@ class Permission extends Controller
             'desc'  =>  trim($request->input('desc')),
             'real_controller'   =>  strtolower(trim($request->input('real_controller'))),
             'real_action'       =>  strtolower(trim($request->input('real_action'))),
-            'request_uri'       =>  strtolower(trim($request->input('request_uri')))
+            'request_uri'       =>  strtolower(trim($request->input('request_uri'))),
+            'is_show_left'  =>  strtolower(trim($request->input('is_show_left'))),
         );
         $result = PermissionLib::addPermission($requestParams);
-        return $this->permissionList($request);
+        if ($result) {
+            //redirect('/permission/adminPermissionList');
+            return $this->permissionList($request);
+        } else {
+
+            $requestParams['error_msg'] = PermissionLib::getErrorMsg();
+            $getParentPermissionWhere = array(
+                'status'    =>  \Themis\Permission\Permission::PERMISSION_STATUS_NORMAL,
+                'parent_id' =>  0,
+                'current_page'  =>  1,
+                'page_limit'    =>  500,
+            );
+            $permissionList = PermissionLib::getPermissionList($getParentPermissionWhere);
+            $parentPermission = $permissionList['list'];
+            $parentPermission[] = array(
+                'id'    =>  0,
+                'name'  =>  '根结点',
+            );
+            return view('permission/addPermission')->with('request_param', $requestParams)->with('parent_permission', $parentPermission);
+        }
     }
 
 
@@ -59,6 +80,18 @@ class Permission extends Controller
      */
     public function showAddPermission(Request $request)
     {
+        $requestParams = array(
+            'name'  =>  '',
+            'desc'  =>  '',
+            'real_controller'   =>  '',
+            'real_action'       =>  '',
+            'request_uri'       =>  '',
+            'error_mes' =>  '',
+            'is_show_left'  =>  0,
+            'parent_id' =>  0,
+            'error_msg' =>  ''
+        );
+
         $getParentPermissionWhere = array(
             'status'    =>  \Themis\Permission\Permission::PERMISSION_STATUS_NORMAL,
             'parent_id' =>  0,
@@ -66,12 +99,14 @@ class Permission extends Controller
             'page_limit'    =>  500,
         );
 
+
+
         $permissionList = PermissionLib::getPermissionList($getParentPermissionWhere);
         $parentPermission = $permissionList['list'];
         $parentPermission[] = array(
             'id'    =>  0,
             'name'  =>  '根结点',
         );
-        return view('permission/addPermission')->with('request_param', $request->all())->with('parent_permission', $parentPermission);
+        return view('permission/addPermission')->with('request_param', $requestParams)->with('parent_permission', $parentPermission);
     }
 }

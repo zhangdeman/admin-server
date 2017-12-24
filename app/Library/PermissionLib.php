@@ -47,7 +47,7 @@ class PermissionLib extends BaseLibrary
                 'son'   =>  array(
                     array(
                         'title' =>  '权限列表',
-                        'href'  =>  '#',
+                        'href'  =>  '/permission/adminPermissionList',
                     ),
 
                     array(
@@ -100,6 +100,7 @@ class PermissionLib extends BaseLibrary
         foreach ($list['list'] as &$item) {
             $item['create_time'] = date('Y-m-d H:i:s', $item['create_time']);
             $item['update_time'] = date('Y-m-d H:i:s', $item['update_time']);
+            $item['is_show_left'] = $item['is_show_left'] == 1 ? '是' : '否';
         }
 
         return $list;

@@ -34,13 +34,13 @@ Route::post('doLogin', function (Request $request) {
 });
 
 //展示添加管理员页面
-Route::get('showAddAdmin', function (Request $request) {
+Route::get('admin/showAddAdmin', function (Request $request) {
     $instance = new App\Http\Controllers\Admin($request);
     return $instance->showAddAdmin();
 });
 
 //添加管理员
-Route::post('doAddAdmin', function (Request $request) {
+Route::post('admin/doAddAdmin', function (Request $request) {
     $instance = new App\Http\Controllers\Admin($request);
     $instance->doAddAdmin($request);
 });
@@ -57,10 +57,10 @@ Route::get('permission/showAuthAdminPermission', function (Request $request) {
     return $instance->showAuthPermission($request);
 });
 
-//角色授权
+//权限列表
 Route::get('permission/adminPermissionList', function (Request $request) {
-    $instance = new App\Http\Controllers\Admin($request);
-    return $instance->adminPermissionList($request);
+    $instance = new App\Http\Controllers\Permission($request);
+    return $instance->permissionList($request);
 });
 
 //获取文章类型列表

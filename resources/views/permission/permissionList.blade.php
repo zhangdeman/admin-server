@@ -13,6 +13,7 @@
                         <th>权限id</th>
                         <th>权限标题</th>
                         <th>权限描述</th>
+                        <th>是否侧边栏展示</th>
                         <th>真实控制器</th>
                         <th>真实方法</th>
                         <th>请求uri</th>
@@ -30,6 +31,7 @@
                             <td>{{$singlePermission['id']}}</td>
                             <td>{{$singlePermission['name']}}</td>
                             <td>{{$singlePermission['desc']}}</td>
+                            <td>{{$singlePermission['is_show_left']}}</td>
                             <td>{{$singlePermission['real_controller']}}</td>
                             <td>{{$singlePermission['real_action']}}</td>
                             <td>{{$singlePermission['request_uri']}}</td>
