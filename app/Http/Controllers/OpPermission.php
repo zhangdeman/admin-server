@@ -92,7 +92,7 @@ class OpPermission extends Controller
         );
 
         $getParentPermissionWhere = array(
-            'status'    =>  \Themis\Permission\Permission::PERMISSION_STATUS_NORMAL,
+            'status'    =>  Permission::PERMISSION_STATUS_NORMAL,
             'parent_id' =>  0,
             'current_page'  =>  1,
             'page_limit'    =>  500,
