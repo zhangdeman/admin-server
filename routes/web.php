@@ -59,8 +59,8 @@ Route::get('permission/showAuthAdminPermission', function (Request $request) {
 
 //权限列表
 Route::get('permission/adminPermissionList', function (Request $request) {
-    $instance = new App\Http\Controllers\OpPermission($request);
-    return $instance->permissionList($request);
+    $instance = new App\Http\Controllers\Admin($request);
+    $instance->adminPermissionList($request);
 });
 
 //获取文章类型列表
