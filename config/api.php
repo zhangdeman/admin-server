@@ -160,4 +160,15 @@ return [
         'options'           =>  array()
     ),
 
+    //授权操作
+    'auth_role_permission' => array(
+        'uri'   =>  '/api/permission/authAdminPermission',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
 ];

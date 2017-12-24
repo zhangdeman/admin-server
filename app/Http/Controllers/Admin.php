@@ -108,7 +108,13 @@ class Admin extends Controller
 
     public function authAdminPermission(Request $request)
     {
-        $params = $request->all();
-        $this->success($params);
+        $requestParams = array(
+            'role_id'   =>  $request->input('role_id'),
+            'permission_ids' => $request->input('select_permission'),
+            'admin_id'  =>  $this->adminInfo['id']
+        );
+
+        $authResult = PermissionLib::authPermission($requestParams);
+        $this->success($authResult);
     }
 }

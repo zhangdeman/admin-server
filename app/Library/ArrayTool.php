@@ -82,4 +82,21 @@ class ArrayTool
 
         return $returnData;
     }
+
+    /**
+     * 集合二维数组指定的key值
+     * @param $dataSource
+     * @param $key
+     * @return array
+     */
+    public static function getFiled($dataSource, $key)
+    {
+        $returnData = array();
+        foreach ($dataSource as $item) {
+            if (isset($item[$key])) {
+                $returnData[] = $item[$key];
+            }
+        }
+        return $returnData;
+    }
 }

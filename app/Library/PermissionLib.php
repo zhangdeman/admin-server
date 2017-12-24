@@ -131,4 +131,15 @@ class PermissionLib extends BaseLibrary
 
         return $permissionList;
     }
+
+    /**
+     * 授权操作
+     * @param $params
+     * @return bool
+     */
+    public static function authPermission($params)
+    {
+        $result = self::curl('auth_role_permission', $params);
+        return $result;
+    }
 }
