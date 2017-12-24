@@ -149,4 +149,15 @@ return [
         'options'           =>  array()
     ),
 
+    //获取角色权限列表
+    'admin_role_permission' => array(
+        'uri'   =>  '/api/permission/getRolePermission',
+        'method'=> 'get',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
 ];

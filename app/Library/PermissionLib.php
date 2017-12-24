@@ -115,4 +115,19 @@ class PermissionLib extends BaseLibrary
         $result = self::curl('add_permission', $params);
         return $result;
     }
+
+    /**
+     * 获取角色权限列表
+     * @param $params
+     * @return array|bool
+     */
+    public static function getAdminRolePermission($params)
+    {
+        $permissionList = self::curl('admin_role_permission', $params);
+        if (empty($permissionList)) {
+            return array();
+        }
+
+        return $permissionList;
+    }
 }

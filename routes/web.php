@@ -57,6 +57,12 @@ Route::get('permission/showAuthAdminPermission', function (Request $request) {
     return $instance->showAuthPermission($request);
 });
 
+//角色授权
+Route::get('permission/adminPermissionList', function (Request $request) {
+    $instance = new App\Http\Controllers\Admin($request);
+    return $instance->adminPermissionList($request);
+});
+
 //获取文章类型列表
 Route::get('article/getArticleKind', function (Request $request) {
     $instance = new App\Http\Controllers\Article($request);

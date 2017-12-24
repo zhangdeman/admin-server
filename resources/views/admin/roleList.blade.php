@@ -22,7 +22,7 @@
                             <td>{{$roleId}}</td>
                             <td>{{$roleTitle}}</td>
                             <td>
-                                <button class="btn btn-success btn-xs"  name="rolePermissionDetail" data-toggle="modal"  href="#rolePermissionDetail">授权</button>
+                                <button class="btn btn-success btn-xs"  name="rolePermissionDetail" data-toggle="modal"  href="#rolePermissionDetail" onclick="runRolePermission({{$roleId}})">授权</button>
                             </td>
                         </tr>
                     @endforeach
@@ -61,4 +61,5 @@
 </div>
 <!-- modal -->
 
+<script type="text/javascript" src="{{URL::asset('js/permission/role-permission.js')}}"></script>
 @include('common/footer');
