@@ -9,8 +9,9 @@ namespace App\Http\Controllers;
 use App\Library\IdWorker;
 use App\Library\PermissionLib;
 use Illuminate\Http\Request;
+use Themis\Permission\Permission;
 
-class Permission extends Controller
+class OpPermission extends Controller
 {
     public function __construct(Request $request)
     {
@@ -55,7 +56,7 @@ class Permission extends Controller
 
             $requestParams['error_msg'] = PermissionLib::getErrorMsg();
             $getParentPermissionWhere = array(
-                'status'    =>  \Themis\Permission\Permission::PERMISSION_STATUS_NORMAL,
+                'status'    =>  Permission::PERMISSION_STATUS_NORMAL,
                 'parent_id' =>  0,
                 'current_page'  =>  1,
                 'page_limit'    =>  500,

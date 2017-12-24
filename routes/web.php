@@ -59,7 +59,7 @@ Route::get('permission/showAuthAdminPermission', function (Request $request) {
 
 //权限列表
 Route::get('permission/adminPermissionList', function (Request $request) {
-    $instance = new App\Http\Controllers\Permission($request);
+    $instance = new App\Http\Controllers\OpPermission($request);
     return $instance->permissionList($request);
 });
 
@@ -83,19 +83,19 @@ Route::post('article/addArticle', function (Request $request) {
 
 //显示添加权限
 Route::get('permission/showAddPermission', function (Request $request) {
-    $instance = new App\Http\Controllers\Permission($request);
+    $instance = new App\Http\Controllers\OpPermission($request);
     return $instance->showAddPermission($request);
 });
 
 //执行添加权限
 Route::post('permission/add', function (Request $request) {
-    $instance = new App\Http\Controllers\Permission($request);
+    $instance = new App\Http\Controllers\OpPermission($request);
     return $instance->doAddPermission($request);
 });
 
 //权限列表
 Route::get('permission/list', function (Request $request) {
-    $instance = new App\Http\Controllers\Permission($request);
+    $instance = new App\Http\Controllers\OpPermission($request);
     return $instance->permissionList($request);
 });
 
