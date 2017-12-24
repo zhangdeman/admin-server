@@ -37,6 +37,7 @@
 <div aria-hidden="true" aria-labelledby="rolePermissionDetail" id="rolePermissionDetail" role="dialog" tabindex="-1" class="modal fade">
 
 </div>
+<input type="hidden" value="{{csrf_token()}}" id="model-csrf">
 <!-- modal -->
 
 <script type="text/javascript" src="{{URL::asset('js/permission/role-permission.js')}}"></script>

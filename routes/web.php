@@ -57,6 +57,13 @@ Route::get('permission/showAuthAdminPermission', function (Request $request) {
     return $instance->showAuthPermission($request);
 });
 
+//authPermission
+//角色授权-执行
+Route::post('admin/authAdminPermission', function (Request $request) {
+    $instance = new App\Http\Controllers\Admin($request);
+    return $instance->authAdminPermission($request);
+});
+
 //权限列表
 Route::get('permission/adminPermissionList', function (Request $request) {
     $instance = new App\Http\Controllers\Admin($request);

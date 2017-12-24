@@ -105,4 +105,10 @@ class Admin extends Controller
 
         $this->success($permissionList);
     }
+
+    public function authAdminPermission(Request $request)
+    {
+        $params = $request->all();
+        $this->success($params);
+    }
 }

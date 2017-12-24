@@ -81,6 +81,45 @@ var rolePermission = {
             "</div></div><! --/wrapper -->";
 
         return html;
+    },
+
+    /**
+     * 获取复选框选中的值
+     * @returns {Array}
+     */
+    getSelectPermissionId : function () {
+        var chk_value =[];
+        $('input[type="checkbox"]:checked').each(function(){
+            chk_value.push($(this).val());
+        });
+        return chk_value;
+    },
+
+    /**
+     * 为角色授权
+     * @param ruleId
+     * @param permission
+     */
+    authRolePermission : function (roleId, permission) {
+        var csrf = $("#model-csrf").val();
+        $.ajax({
+            type: 'POST',
+            url: '/admin/authAdminPermission',
+            data: {
+                '_token' : csrf,
+                'role_id'  : roleId,
+                'select_permission' : permission
+            },
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                alert('授权成功');
+
+            },
+            error : function () {
+                alert('授权失败');
+            }
+        });
     }
 };
 
@@ -89,10 +128,9 @@ function runRolePermission(roleId)
     rolePermission.setPermissionHtml(roleId)
 }
 
-function authPermission(roleId) {
-    var chk_value =[];
-    $('section input[type="checkbox"]:checked').each(function(){
-        chk_value.push($(this).val());
-    });
-    alert(chk_value.length==0 ?'你还没有选择任何内容！':chk_value);
+function authPermission(roleId)
+{
+    var permission = rolePermission.getSelectPermissionId();
+    var permissionStr = permission.join(',');
+    rolePermission.authRolePermission(roleId, permissionStr);
 }
