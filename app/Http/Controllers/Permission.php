@@ -9,8 +9,6 @@ namespace App\Http\Controllers;
 use App\Library\IdWorker;
 use App\Library\PermissionLib;
 use Illuminate\Http\Request;
-use Themis\Admin\Admin;
-use App\Library\AuthClient;
 
 class Permission extends Controller
 {
