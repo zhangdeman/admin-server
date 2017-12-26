@@ -18,12 +18,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">文章模块</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control col-sm-10">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select class="form-control col-sm-10" id="parent-kind">
                                     </select>
                                 </div>
                             </div>
@@ -31,7 +26,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">文章类型</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control col-sm-10">
+                                    <select class="form-control col-sm-10" id="son-kind">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>

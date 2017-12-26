@@ -136,6 +136,13 @@ class Article extends Controller
         return view('article/articleKindList')->with('list', $kindList);
     }
 
+    public function getAllKindList(Request $request)
+    {
+        $kindList = ArticleLib::getArticleKind(array('page_size' => 200, 'current_page' => 1));
+        $groupList = ArrayTool::group($kindList['article_kind_list'], 'parent_id');
+        $this->success($groupList);
+    }
+
     /**
      * 获取类别详情接口
      * @param Request $request

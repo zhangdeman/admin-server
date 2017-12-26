@@ -11,15 +11,16 @@ var article = {
         //获取文章列表
         $.ajax({
             type: 'GET',
-            url: '/article/getArticleKind',
+            url: '/article/getAllArticleKind',
             data: {
                 'admin_token' : adminToken,
             },
             dataType: "json",
             success: function (data) {
+                console.log(data)
                 var kindList = data.data;
-                article._setParentKind(kindList);
-                article._setSonKind(kindList, 1);
+                article._setParentKind(kindList[0]);
+                article._setSonKind(kindList, kindList[0][0].id);
                 article._selectOnChanged(kindList, 1);
             },
             error : function () {
@@ -38,7 +39,7 @@ var article = {
         var listLen = kindList.length;
         var option = '';
         for (var index = 0; index < listLen; index++) {
-            option += "<option value=\"" + kindList[index]['value'] + "\">" + kindList[index]['name'] + "</option>"
+            option += "<option value=\"" + kindList[index].id + "\">" + kindList[index].title + "</option>"
         }
 
         $("#parent-kind").html(option);
@@ -51,19 +52,12 @@ var article = {
      * @private
      */
     _setSonKind : function (kindList, parentKindValue) {
-        var sonList = [];
-        var len = kindList.length;
-        for (var index = 0; index < len; index++) {
-            if (parentKindValue == kindList[index]['value']) {
-                sonList = kindList[index]['son'];
-                break;
-            }
-        }
+        var sonList = kindList[parentKindValue];
 
         var sonListLen = sonList.length;
         var option = "";
         for (var sonIndex = 0; sonIndex < sonListLen; sonIndex++) {
-            option += "<option value=\"" + sonList[sonIndex]['value'] + "\">" + sonList[sonIndex]['name'] + "</option>"
+            option += "<option value=\"" + sonList[sonIndex].id + "\">" + sonList[sonIndex].title + "</option>"
         }
 
         $("#son-kind").html(option);

@@ -71,9 +71,9 @@ Route::get('permission/adminPermissionList', function (Request $request) {
 });
 
 //获取文章类型列表
-Route::get('article/getArticleKind', function (Request $request) {
+Route::get('article/getAllArticleKind', function (Request $request) {
     $instance = new App\Http\Controllers\Article($request);
-    $instance->getKindList($request);
+    return $instance->getAllKindList($request);
 });
 
 //显示添加文章页面
