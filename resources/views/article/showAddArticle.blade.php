@@ -45,7 +45,7 @@
                                 <label class="col-sm-2 col-sm-2 control-label">文章正文</label>
                                 <div class="col-sm-10">
                                         <!-- 加载编辑器的容器 -->
-                                        <script id="container" name="content" type="text/plain">
+                                        <script id="article-content" name="article-content" type="text/plain">
 
                                         </script>
                                 </div>
@@ -75,6 +75,6 @@
 <script type="text/javascript" src="{{URL::asset('ueditor/ueditor.all.js')}}"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-    var ue = UE.getEditor('container');
+    var ue = UE.getEditor('article-content');
 </script>
 <script type="text/javascript" src="{{URL::asset('js/article/add-article.js')}}"></script>
