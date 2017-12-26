@@ -1,67 +1,69 @@
-@include('common/header')
+@include('common/header');
+@include('common/left');
+<section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i> 发布文章</h3>
+            <!-- BASIC FORM ELELEMNTS -->
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="form-panel">
+                        <h4 class="mb"><i class="fa fa-angle-right"></i>发布文章</h4>
+                        <form class="form-horizontal style-form" method="get">
+                            <div class="form-group">
+                                <label class="col-sm-2 col-sm-2 control-label">文章标题</label>
+                                <div class="col-sm-10">
+                                    <input id="article-title" type="text" class="form-control">
+                                </div>
+                            </div>
 
-<section id="main" class="p-relative" role="main">
+                            <div class="form-group">
+                                <label class="col-sm-2 col-sm-2 control-label">文章模块</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control col-sm-10" id="parent-kind">
+                                    </select>
+                                </div>
+                            </div>
 
-    @include('common/left')
+                            <div class="form-group">
+                                <label class="col-sm-2 col-sm-2 control-label">文章类型</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control col-sm-10" id="son-kind">
+                                    </select>
+                                </div>
+                            </div>
 
-    <!-- Content -->
-    <section id="content" class="container">
-
-        <!-- Breadcrumb -->
-        <ol class="breadcrumb hidden-xs">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li class="active">Data</li>
-        </ol>
-
-        <h4 class="page-title">管理后台</h4>
-
-        <!-- Text Input -->
-        <div class="block-area" id="text-input">
-            <h3 class="block-title">发布文章</h3>
-
-            <p>发布文章.</p>
-
-            <div class="block-area hidden" id="show-op-result">
-                <h3 class="block-title">操作结果</h3>
-            </div>
-            <div class="block-area">
-                <input class="form-control input-lg m-b-10" type="text" name="article-title" id="article-title" placeholder="文章标题">
-                <input class="hidden" type="text" name="_csrf" id="csrf_token" value="{{csrf_token()}}">
-            </div>
-
-                <select id="parent-kind" name="parent_kind" class="form-control input-lg m-b-10">
-
-                </select>
+                            <div class="form-group">
+                                <label class="col-sm-2 col-sm-2 control-label">文章正文</label>
+                                <div class="col-sm-10">
+                                        <!-- 加载编辑器的容器 -->
+                                        <script id="article-content" name="article-content" type="text/plain">
+                                        </script>
+                                </div>
+                            </div>
+                            <button type="button" id="add-article" class="btn btn-theme">发布</button>
+                        </form>
+                    </div>
+                </div><!-- col-lg-12-->
+            </div><!-- /row -->
 
 
-                <select id="son-kind" name="son_kind" class="form-control input-lg m-b-10">
 
-                </select>
+        </section><! --/wrapper -->
+@include('common/footer');
+<script>
+    //custom select box
 
-        </div>
+    $(function(){
+        //$('select.styled').customSelect();
+    });
 
-        <div class="block-area" id="text-input">
-        <!-- 加载编辑器的容器 -->
-        <script id="container" name="content" type="text/plain">
+</script>
 
-        </script>
-
-        <!-- 配置文件 -->
-        <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
-        <!-- 编辑器源码文件 -->
-        <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
-        <!-- 实例化编辑器 -->
-        <script type="text/javascript">
-            var ue = UE.getEditor('container');
-        </script>
-        </div>
-        <div class="block-area">
-            <input class="form-control input-lg m-b-10" type="button" name="add-article" id="add-article" value="添加文章">
-        </div>
-    </section>
-</section>
-
-@include('common/footer')
-<script type="text/javascript" src="/js/article/add-article.js"></script>
-
+<!-- 配置文件 -->
+<script type="text/javascript" src="{{URL::asset('ueditor/ueditor.config.js')}}"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="{{URL::asset('ueditor/ueditor.all.js')}}"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('article-content');
+</script>
+<script type="text/javascript" src="{{URL::asset('js/article/add-article.js')}}"></script>

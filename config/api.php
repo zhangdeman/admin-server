@@ -62,7 +62,7 @@ return [
 
     //获取文章类别
     'get_article_kind' => array(
-        'uri'   =>  '/api/article/getArticleKind',
+        'uri'   =>  '/api/articleKind/list',
         'method'=> 'get',
         'connect_time_out'  =>  20,
         'execute_time_out'  =>  30,
@@ -74,7 +74,96 @@ return [
     //获取文章类别
     'add_article' => array(
         'uri'   =>  '/api/article/addArticle',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+    //添加文章类别
+    'add_article_kind' => array(
+        'uri'   =>  '/api/articleKind/add',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+    //添加文章类别
+    'article_kind_detail' => array(
+        'uri'   =>  '/api/articleKind/detail',
         'method'=> 'get',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+    //更新文章类别
+    'article_kind_update' => array(
+        'uri'   =>  '/api/articleKind/update',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+
+    //删除文章类别
+    'article_kind_delete' => array(
+        'uri'   =>  '/api/articleKind/delete',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+    //获取权限列表
+    'get_permission_list' => array(
+        'uri'   =>  '/api/permission/getList',
+        'method'=> 'get',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+    //获取权限列表
+    'add_permission' => array(
+        'uri'   =>  '/api/permission/add',
+        'method'=> 'post',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+    //获取角色权限列表
+    'admin_role_permission' => array(
+        'uri'   =>  '/api/permission/getRolePermission',
+        'method'=> 'get',
+        'connect_time_out'  =>  20,
+        'execute_time_out'  =>  30,
+        'retry_times'       =>  2,
+        'header'            =>  array(),
+        'options'           =>  array()
+    ),
+
+    //授权操作
+    'auth_role_permission' => array(
+        'uri'   =>  '/api/permission/authAdminPermission',
+        'method'=> 'post',
         'connect_time_out'  =>  20,
         'execute_time_out'  =>  30,
         'retry_times'       =>  2,

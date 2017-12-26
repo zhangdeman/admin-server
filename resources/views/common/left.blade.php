@@ -1,164 +1,110 @@
-<!-- Sidebar -->
-<aside id="sidebar">
+<!-- **********************************************************************************************************************************************************
+   MAIN SIDEBAR MENU
+   *********************************************************************************************************************************************************** -->
+<!--sidebar start-->
+<aside>
+    <div id="sidebar"  class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
 
-    <!-- Sidbar Widgets -->
-    <div class="side-widgets overflow">
-        <!-- Profile Menu -->
-        <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-            <a href="" data-toggle="dropdown">
-                <img class="profile-pic animated" src="/bootstrap/img/profile-pic.jpg" alt="">
-            </a>
-            <ul class="dropdown-menu profile-menu">
-                <li><a href="">My Profile</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                <li><a href="">Messages</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                <li><a href="">Settings</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                <li><a href="">Sign Out</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-            </ul>
-            <h4 class="m-0">Malinda Hollaway</h4>
-            @malinda-h
-        </div>
+            <p class="centered"><a href="#"><img src="{{URL::asset('assets/img/ui-sam.jpg')}}" class="img-circle" width="60"></a></p>
+            <h5 class="centered">{{$admin_info['nickname']}}</h5>
 
-        <!-- Calendar -->
-        <div class="s-widget m-b-25">
-            <div id="sidebar-calendar"></div>
-        </div>
+            <li class="mt">
+                <a class="active" href="/index">
+                    <i class="fa fa-dashboard"></i>
+                    <span>管理首页</span>
+                </a>
+            </li>
 
-        <!-- Feeds -->
-        <div class="s-widget m-b-25">
-            <h2 class="tile-title">
-                News Feeds
-            </h2>
+            @foreach($permission_list as $permission_item)
+                <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-desktop"></i>
+                    <span>{{$permission_item['title']}}</span>
+                </a>
+                <ul class="sub">
+                    @foreach($permission_item['son'] as $son_item)
+                        <li><a  href="{{$son_item['href']}}">{{$son_item['title']}}</a></li>
+                    @endforeach
+                </ul>
+                </li>
+            @endforeach
 
-            <div class="s-widget-body">
-                <div id="news-feed"></div>
-            </div>
-        </div>
+            <!--li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-desktop"></i>
+                    <span>UI Elements</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="general.html">General</a></li>
+                    <li><a  href="buttons.html">Buttons</a></li>
+                    <li><a  href="panels.html">Panels</a></li>
+                </ul>
+            </li>
 
-        <!-- Projects -->
-        <div class="s-widget m-b-25">
-            <h2 class="tile-title">
-                Projects on going
-            </h2>
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-cogs"></i>
+                    <span>Components</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="calendar.html">Calendar</a></li>
+                    <li><a  href="gallery.html">Gallery</a></li>
+                    <li><a  href="todo_list.html">Todo List</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-book"></i>
+                    <span>Extra Pages</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="blank.html">Blank Page</a></li>
+                    <li><a  href="login.html">Login</a></li>
+                    <li><a  href="lock_screen.html">Lock Screen</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-tasks"></i>
+                    <span>Forms</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="form_component.html">Form Components</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-th"></i>
+                    <span>Data Tables</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="basic_table.html">Basic Table</a></li>
+                    <li><a  href="responsive_table.html">Responsive Table</a></li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class=" fa fa-bar-chart-o"></i>
+                    <span>Charts</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="morris.html">Morris</a></li>
+                    <li><a  href="chartjs.html">Chartjs</a></li>
+                </ul>
+            </li-->
 
-            <div class="s-widget-body">
-                <div class="side-border">
-                    <small>Joomla Website</small>
-                    <div class="progress progress-small">
-                        <a href="#" data-toggle="tooltip" title="" class="progress-bar tooltips progress-bar-danger" style="width: 60%;" data-original-title="60%">
-                            <span class="sr-only">60% Complete</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="side-border">
-                    <small>Opencart E-Commerce Website</small>
-                    <div class="progress progress-small">
-                        <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-info" style="width: 43%;" data-original-title="43%">
-                            <span class="sr-only">43% Complete</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="side-border">
-                    <small>Social Media API</small>
-                    <div class="progress progress-small">
-                        <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-warning" style="width: 81%;" data-original-title="81%">
-                            <span class="sr-only">81% Complete</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="side-border">
-                    <small>VB.Net Software Package</small>
-                    <div class="progress progress-small">
-                        <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: 10%;" data-original-title="10%">
-                            <span class="sr-only">10% Complete</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="side-border">
-                    <small>Chrome Extension</small>
-                    <div class="progress progress-small">
-                        <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: 95%;" data-original-title="95%">
-                            <span class="sr-only">95% Complete</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </ul>
+        <!-- sidebar menu end-->
     </div>
-
-    <!-- Side Menu -->
-    <ul class="list-unstyled side-menu">
-        <li>
-            <a class="sa-side-home" href="index.html">
-                <span class="menu-item">Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a class="sa-side-typography" href="typography.html">
-                <span class="menu-item">Typography</span>
-            </a>
-        </li>
-        <li>
-            <a class="sa-side-widget" href="content-widgets.html">
-                <span class="menu-item">Widgets</span>
-            </a>
-        </li>
-        <li>
-            <a class="sa-side-table" href="tables.html">
-                <span class="menu-item">Tables</span>
-            </a>
-        </li>
-        <li class="dropdown active">
-            <a class="sa-side-form" href="">
-                <span class="menu-item">Form</span>
-            </a>
-            <ul class="list-unstyled menu-item">
-                <li><a class="active" href="form-elements.html">Basic Form Elements</a></li>
-                <li><a href="form-components.html">Form Components</a></li>
-                <li><a href="form-examples.html">Form Examples</a></li>
-                <li><a href="form-validation.html">Form Validation</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="sa-side-ui" href="">
-                <span class="menu-item">User Interface</span>
-            </a>
-            <ul class="list-unstyled menu-item">
-                <li><a href="buttons.html">Buttons</a></li>
-                <li><a href="labels.html">Labels</a></li>
-                <li><a href="images-icons.html">Images &amp; Icons</a></li>
-                <li><a href="alerts.html">Alerts</a></li>
-                <li><a href="media.html">Media</a></li>
-                <li><a href="components.html">Components</a></li>
-                <li><a href="other-components.html">Others</a></li>
-            </ul>
-        </li>
-        <li>
-            <a class="sa-side-chart" href="charts.html">
-                <span class="menu-item">Charts</span>
-            </a>
-        </li>
-        <li>
-            <a class="sa-side-folder" href="file-manager.html">
-                <span class="menu-item">File Manager</span>
-            </a>
-        </li>
-        <li>
-            <a class="sa-side-calendar" href="calendar.html">
-                <span class="menu-item">Calendar</span>
-            </a>
-        </li>
-        <li class="dropdown">
-            <a class="sa-side-page" href="">
-                <span class="menu-item">Pages</span>
-            </a>
-            <ul class="list-unstyled menu-item">
-                <li><a href="list-view.html">List View</a></li>
-                <li><a href="profile-page.html">Profile Page</a></li>
-                <li><a href="messages.html">Messages</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="404.html">404 Error</a></li>
-            </ul>
-        </li>
-    </ul>
-
 </aside>
+<!--sidebar end-->
+
+<!--div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div-->
+
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">

@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
+use \App\Library\PermissionLib;
 use Route;
 use Themis\Api\Out;
 
@@ -21,16 +22,30 @@ class Controller extends BaseController
     //管理员信息
     public $adminInfo = array();
 
+    //管理员权限
+    public $adminPermission = array();
+
     //不验证token接口 login
     public static $WHITE_INTERFACE = array(
         'App\\Http\\Controllers\\Login'
     );
+
+    //不验证token的uri
+    public static $WHITE_URI = array(
+        'login',
+        'dologin',
+    );
+
+    //当前uri
+    public static $CURRENT_URI = '';
 
     //当前控制器
     public static $CURRENT_CLASS = '';
 
     public function __construct(Request $request)
     {
+        self::$CURRENT_URI = strtolower($request->path());
+
         self::$requestInstance = $request;
 
         if (empty(self::$CURRENT_CLASS)) {
@@ -46,11 +61,10 @@ class Controller extends BaseController
      */
     public function validateToken()
     {
-        if (in_array(self::$CURRENT_CLASS, self::$WHITE_INTERFACE)) {
+        if (in_array(self::$CURRENT_CLASS, self::$WHITE_INTERFACE) || in_array(self::$CURRENT_URI, self::$WHITE_URI)) {
             //不验证token
             return true;
         }
-
 
         $token = self::$requestInstance->input('admin_token');
         $token = empty($token) ? $_COOKIE['deman_club_token'] : $token;
@@ -62,6 +76,12 @@ class Controller extends BaseController
         }
 
         $this->adminInfo = $validateTokenResult;
+
+        view()->share('admin_info', $this->adminInfo);
+
+        $permission = $this->getPermission($this->adminInfo["id"]);
+
+        view()->share('permission_list', $permission);
     }
 
 
@@ -84,6 +104,18 @@ class Controller extends BaseController
 
         //完成请求提前返回，但可以继续后续逻辑
         fastcgi_finish_request();
+    }
+
+    /**
+     * @param $adminId
+     * @return array
+     * 获取当前管理员权限
+     */
+    public function getPermission($adminId)
+    {
+        $permission = PermissionLib::getLeftNav(array());
+        $this->adminPermission = $permission;
+        return $permission;
     }
 
     /**

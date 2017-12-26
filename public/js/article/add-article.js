@@ -11,15 +11,16 @@ var article = {
         //获取文章列表
         $.ajax({
             type: 'GET',
-            url: '/article/getArticleKind',
+            url: '/article/getAllArticleKind',
             data: {
                 'admin_token' : adminToken,
             },
             dataType: "json",
             success: function (data) {
+                console.log(data)
                 var kindList = data.data;
-                article._setParentKind(kindList);
-                article._setSonKind(kindList, 1);
+                article._setParentKind(kindList[0]);
+                article._setSonKind(kindList, kindList[0][0].id);
                 article._selectOnChanged(kindList, 1);
             },
             error : function () {
@@ -38,7 +39,7 @@ var article = {
         var listLen = kindList.length;
         var option = '';
         for (var index = 0; index < listLen; index++) {
-            option += "<option value=\"" + kindList[index]['value'] + "\">" + kindList[index]['name'] + "</option>"
+            option += "<option value=\"" + kindList[index].id + "\">" + kindList[index].title + "</option>"
         }
 
         $("#parent-kind").html(option);
@@ -51,19 +52,12 @@ var article = {
      * @private
      */
     _setSonKind : function (kindList, parentKindValue) {
-        var sonList = [];
-        var len = kindList.length;
-        for (var index = 0; index < len; index++) {
-            if (parentKindValue == kindList[index]['value']) {
-                sonList = kindList[index]['son'];
-                break;
-            }
-        }
+        var sonList = kindList[parentKindValue];
 
         var sonListLen = sonList.length;
         var option = "";
         for (var sonIndex = 0; sonIndex < sonListLen; sonIndex++) {
-            option += "<option value=\"" + sonList[sonIndex]['value'] + "\">" + sonList[sonIndex]['name'] + "</option>"
+            option += "<option value=\"" + sonList[sonIndex].id + "\">" + sonList[sonIndex].title + "</option>"
         }
 
         $("#son-kind").html(option);
@@ -90,13 +84,13 @@ var article = {
             //获取token
             var adminToken = Cookie._getCookie('deman_club_token');
             if ('' == adminToken || undefined == adminToken || null == adminToken) {
-                article._setAddArticleErrorMsg('alert-danger', '登录已过期，请登录后操作');
+                //article._setAddArticleErrorMsg('alert-danger', '登录已过期，请登录后操作');
                 return false;
             }
 
             var _token = $("#csrf_token").val();
 
-            var isHasContent = UE.getEditor('container').hasContents();
+            var isHasContent = UE.getEditor('article-content').hasContents();
             if (false == isHasContent) {
                 //正文内容为空
                 return false;
@@ -104,8 +98,8 @@ var article = {
             var title = $("#article-title").val();
             var parentKind = $("#parent-kind").val();
             var sonKind = $("#son-kind").val();
-            var htmlContent = UE.getEditor('container').getContent();
-            var textContent = UE.getEditor('container').getContentTxt();
+            var htmlContent = UE.getEditor('article-content').getContent();
+            var textContent = UE.getEditor('article-content').getContentTxt();
             //获取文章列表
             $.ajax({
                 headers: { 'X-CSRF-TOKEN' : _token },
