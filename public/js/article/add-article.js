@@ -84,13 +84,13 @@ var article = {
             //获取token
             var adminToken = Cookie._getCookie('deman_club_token');
             if ('' == adminToken || undefined == adminToken || null == adminToken) {
-                article._setAddArticleErrorMsg('alert-danger', '登录已过期，请登录后操作');
+                //article._setAddArticleErrorMsg('alert-danger', '登录已过期，请登录后操作');
                 return false;
             }
 
             var _token = $("#csrf_token").val();
 
-            var isHasContent = UE.getEditor('container').hasContents();
+            var isHasContent = UE.getEditor('article-content').hasContents();
             if (false == isHasContent) {
                 //正文内容为空
                 return false;
@@ -98,8 +98,8 @@ var article = {
             var title = $("#article-title").val();
             var parentKind = $("#parent-kind").val();
             var sonKind = $("#son-kind").val();
-            var htmlContent = UE.getEditor('container').getContent();
-            var textContent = UE.getEditor('container').getContentTxt();
+            var htmlContent = UE.getEditor('article-content').getContent();
+            var textContent = UE.getEditor('article-content').getContentTxt();
             //获取文章列表
             $.ajax({
                 headers: { 'X-CSRF-TOKEN' : _token },

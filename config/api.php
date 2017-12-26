@@ -74,7 +74,7 @@ return [
     //获取文章类别
     'add_article' => array(
         'uri'   =>  '/api/article/addArticle',
-        'method'=> 'get',
+        'method'=> 'post',
         'connect_time_out'  =>  20,
         'execute_time_out'  =>  30,
         'retry_times'       =>  2,

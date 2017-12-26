@@ -11,7 +11,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">文章标题</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control">
+                                    <input id="article-title" type="text" class="form-control">
                                 </div>
                             </div>
 
@@ -27,11 +27,6 @@
                                 <label class="col-sm-2 col-sm-2 control-label">文章类型</label>
                                 <div class="col-sm-10">
                                     <select class="form-control col-sm-10" id="son-kind">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
                                     </select>
                                 </div>
                             </div>
@@ -41,11 +36,10 @@
                                 <div class="col-sm-10">
                                         <!-- 加载编辑器的容器 -->
                                         <script id="article-content" name="article-content" type="text/plain">
-
                                         </script>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-theme">发布</button>
+                            <button type="button" id="add-article" class="btn btn-theme">发布</button>
                         </form>
                     </div>
                 </div><!-- col-lg-12-->
