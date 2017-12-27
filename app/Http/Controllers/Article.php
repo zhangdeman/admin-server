@@ -79,6 +79,9 @@ class Article extends Controller
 
             ),
         );
+        if (empty($articleList)) {
+            $articleList[0] = array();
+        }
         foreach ($articleList[0] as $parentId => $item) {
             if (empty($articleList[$item['id']])) {
                 $tmp = array(
